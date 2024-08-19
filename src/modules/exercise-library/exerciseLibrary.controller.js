@@ -1,7 +1,13 @@
 const ExerciseLibraryService = require('./exerciseLibrary.service')
 
-const getBarbellExercises = (req,res,next) => {
-     res.send(ExerciseLibraryService.getBarbellExercises())
+const getBarbellExercises = async (req,res,next) => {
+     const exercises = await ExerciseLibraryService.getBarbellExercises()
+     res.send(exercises)
 }
 
-module.exports = {getBarbellExercises} 
+const createExercise = async (req,res,next) => {
+     await ExerciseLibraryService.createExercise()
+     res.send({message:"Exercise sucessfully created",status:201})
+}
+
+module.exports = {getBarbellExercises,createExercise} 

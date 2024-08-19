@@ -6,5 +6,10 @@ route.get(
   "/exercise-library/barbell",
   ExerciseLibraryController.getBarbellExercises
 );
+// Purely for testing purposes should be deleted eventually and replaced with seeding db
+route.get(
+  "/internal/exercise-library/",
+  ExerciseLibraryController.createExercise
+);
 
-module.exports = route; 
+module.exports = route;

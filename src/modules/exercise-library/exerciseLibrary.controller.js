@@ -12,7 +12,7 @@ const getExercisesByType = async (req, res, next) => {
 const createExercise = async (req, res, next) => {
   try {
     await ExerciseLibraryService.createExercise(req, res);
-    res.send({ message: "Exercise sucessfully created", status: 201 });
+    res.status(201).json({ message: "Exercise sucessfully created" });
   } catch (err) {
     next(err);
   }

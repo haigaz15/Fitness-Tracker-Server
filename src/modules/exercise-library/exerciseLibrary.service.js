@@ -7,7 +7,10 @@ const getExercisesByType = async (req, res) => {
     if (!exerciseTypes[type]) {
       throw new APIError("Incorrect exercise type", 400);
     }
-    const exercises = await ExerciseRepository.findAll({ type: type });
+    const exercises =
+      type === exerciseTypes.all
+        ? await ExerciseRepository.findAll({})
+        : await ExerciseRepository.findAll({ type: type });
     if (exercises.length === 0 || !exercises) {
       throw new APIError("Could not find the excersies", 404);
     }
@@ -18,11 +21,11 @@ const getExercisesByType = async (req, res) => {
 };
 
 const createExercise = async (req, res) => {
-  try{
-  const exercise = req.body;
-  await ExerciseRepository.createOne(exercise);
-  }catch(err){
-    throw err
+  try {
+    const exercise = req.body;
+    await ExerciseRepository.createOne(exercise);
+  } catch (err) {
+    throw err;
   }
 };
 

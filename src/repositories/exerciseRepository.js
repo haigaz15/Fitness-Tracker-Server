@@ -5,16 +5,16 @@ const findOne = async (query) => {
 };
 
 const findAll = async (query) => {
-    return await Exercise.find(query);
-}
+  return await Exercise.find(query);
+};
 
 const createOne = async (data) => {
-    const exercise = new Exercise(data)
-    await exercise.save()
-}
+  const exercise = new Exercise(data);
+  await exercise.save();
+};
 
 const insertMany = async (data) => {
-    await Exercise.insertMany(data);
-} 
+  await Exercise.insertMany(data);
+};
 
-module.exports = { findOne,createOne,insertMany,findAll };
+module.exports = { findOne, createOne, insertMany, findAll };

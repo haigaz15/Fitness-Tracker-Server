@@ -3,11 +3,11 @@ const ExerciseLibraryController = require("../../modules/exercise-library/exerci
 const route = express.Router();
 
 route.get(
-  "/exercise-library/barbell",
-  ExerciseLibraryController.getBarbellExercises
+  "/exercise-library/:type",
+  ExerciseLibraryController.getExercisesByType
 );
 // Purely for testing purposes should be deleted eventually and replaced with seeding db
-route.get(
+route.post(
   "/internal/exercise-library/",
   ExerciseLibraryController.createExercise
 );

@@ -1,4 +1,4 @@
-const Exercise = require("../db/schemas/exerciseSchema");
+const {Exercise} = require("../db/schemas/exerciseSchema");
 
 const findOne = async (query) => {
   return await Exercise.findOne(query);

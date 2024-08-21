@@ -1,10 +1,9 @@
 const WorkoutSessionService = require("./workoutSession.service");
 
 const createWorkoutSession = async (req, res, next) => {
-    console.log("here")
   try {
     await WorkoutSessionService.createWorkoutSession(req, res);
-    res.status(201).send({message:"sucessfully created"})
+    res.status(201).send({ message: "sucessfully created" });
   } catch (err) {
     next(err);
   }
@@ -12,8 +11,11 @@ const createWorkoutSession = async (req, res, next) => {
 
 const startEndWorkoutSession = async (req, res, next) => {
   try {
-    const sessionUpdate = await WorkoutSessionService.startEndWorkoutSession(req, res);
-    res.send(sessionUpdate)
+    const sessionUpdate = await WorkoutSessionService.startEndWorkoutSession(
+      req,
+      res
+    );
+    res.send(sessionUpdate);
   } catch (err) {
     next(err);
   }

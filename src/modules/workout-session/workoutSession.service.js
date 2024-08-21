@@ -1,13 +1,29 @@
 const WorkoutSessionRepository = require("../../repositories/workoutSessionRepository");
 const APIError = require("../../core/api-errors");
 const mongoose = require("mongoose");
+const {
+  ExerciseParentDTO,
+  ExerciseDTO,
+  CreateWorkoutSessionDTO,
+} = require("./dto/workoutSession.dto");
 const createWorkoutSession = async (req, res) => {
   try {
     const workoutSessionData = req.body;
-    await WorkoutSessionRepository.createOne({
-      workoutDate: workoutSessionData.workoutDate,
-      exercises: workoutSessionData.exercises,
+    const exercises = workoutSessionData.exercises.map((e) => {
+      const exerciseParent = {
+        exercise: new ExerciseDTO(e.exercise),
+        set: e.set,
+        reps: e.reps,
+      };
+      return new ExerciseParentDTO(exerciseParent);
     });
+
+    await WorkoutSessionRepository.createOne(
+      new CreateWorkoutSessionDTO({
+        workoutDate: workoutSessionData.workoutDate,
+        exercises: exercises,
+      })
+    );
   } catch (err) {
     throw err;
   }

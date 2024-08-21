@@ -1,11 +1,3 @@
-class ExerciseDTO {
-  constructor(exercise) {
-    this.name = exercise.name;
-    this.type = exercise.type;
-    this.description = exercise.description;
-  }
-}
-
 class ExerciseParentDTO {
   constructor(exerciseParent) {
     this.exercise = exerciseParent.exercise;
@@ -22,11 +14,15 @@ class CreateWorkoutSessionDTO {
 }
 
 class StartWorkoutSessionDTO {
-    constructor(data){
-        this.id = data.id;
-        this.startTime = data.startTime;
-        this.endTime = data.endTime;
-    }
+  constructor(data) {
+    this.id = data.id;
+    this.startTime = data.startTime;
+    this.endTime = data.endTime;
+  }
 }
 
-module.exports = { ExerciseDTO, ExerciseParentDTO, CreateWorkoutSessionDTO, StartWorkoutSessionDTO };
+module.exports = {
+  ExerciseParentDTO,
+  CreateWorkoutSessionDTO,
+  StartWorkoutSessionDTO,
+};

@@ -3,10 +3,10 @@ const APIError = require("../../core/api-errors");
 
 const {
   ExerciseParentDTO,
-  ExerciseDTO,
   CreateWorkoutSessionDTO,
   StartWorkoutSessionDTO,
 } = require("./dto/workoutSession.dto");
+const { ExerciseDTO } = require("../exercise-library/dto/exerciseLibraryDTO");
 const createWorkoutSession = async (req, res) => {
   try {
     const workoutSessionData = req.body;

@@ -9,6 +9,9 @@ router.get(
   WorkoutSessionController.retrieveWorkoutSessions
 );
 
-router.put("/workout-session/:session", WorkoutSessionController.startEndWorkoutSession);
+router.put(
+  "/workout-session/:session",
+  WorkoutSessionController.startEndWorkoutSession
+);
 
 module.exports = router;

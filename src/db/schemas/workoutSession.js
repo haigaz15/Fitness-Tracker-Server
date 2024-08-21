@@ -21,6 +21,7 @@ const WorkoutSessionSchema = new mongoose.Schema({
       reps: { type: String },
     },
   ],
+  notes: { type: String },
 });
 
 const WorkoutSession = mongoose.model("workout-session", WorkoutSessionSchema);

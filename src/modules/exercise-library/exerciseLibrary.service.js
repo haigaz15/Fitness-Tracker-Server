@@ -1,6 +1,7 @@
 const ExerciseRepository = require("../../repositories/exerciseRepository");
 const exerciseTypes = require("./exercise.type");
 const APIError = require("../../core/api-errors");
+const { ExerciseDTO } = require("./dto/exerciseLibraryDTO");
 const getExercisesByType = async (req, res) => {
   try {
     const { type } = req.params;
@@ -14,7 +15,13 @@ const getExercisesByType = async (req, res) => {
     if (exercises.length === 0 || !exercises) {
       throw new APIError("Could not find the excersies", 404);
     }
-    return exercises;
+    return exercises.map((exercise) => {
+      return {
+        name: exercise.name,
+        type: exercise.type,
+        description: exercise.description,
+      };
+    });
   } catch (err) {
     throw err;
   }
@@ -23,7 +30,7 @@ const getExercisesByType = async (req, res) => {
 const createExercise = async (req, res) => {
   try {
     const exercise = req.body;
-    await ExerciseRepository.createOne(exercise);
+    await ExerciseRepository.createOne(new ExerciseDTO(exercise));
   } catch (err) {
     throw err;
   }

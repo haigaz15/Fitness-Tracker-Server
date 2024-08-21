@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon ./src/app",
+    "fix": "prettier --write ./src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Haigaz Soghomonian",

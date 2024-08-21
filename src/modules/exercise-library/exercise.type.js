@@ -4,7 +4,7 @@ const exerciseTypes = Object.freeze({
   cable: "cable",
   bodyweight: "bodyweight",
   kettle: "kettle",
-  all:"all"
+  all: "all",
 });
 
 module.exports = exerciseTypes;

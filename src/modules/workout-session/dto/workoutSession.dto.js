@@ -21,4 +21,12 @@ class CreateWorkoutSessionDTO {
   }
 }
 
-module.exports = { ExerciseDTO, ExerciseParentDTO, CreateWorkoutSessionDTO };
+class StartWorkoutSessionDTO {
+    constructor(data){
+        this.id = data.id;
+        this.startTime = data.startTime;
+        this.endTime = data.endTime;
+    }
+}
+
+module.exports = { ExerciseDTO, ExerciseParentDTO, CreateWorkoutSessionDTO, StartWorkoutSessionDTO };

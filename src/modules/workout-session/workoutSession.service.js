@@ -5,6 +5,7 @@ const {
   ExerciseParentDTO,
   ExerciseDTO,
   CreateWorkoutSessionDTO,
+  StartWorkoutSessionDTO,
 } = require("./dto/workoutSession.dto");
 const createWorkoutSession = async (req, res) => {
   try {
@@ -33,15 +34,39 @@ const startEndWorkoutSession = async (req, res) => {
   try {
     const startSessionData = req.body;
     const { session } = req.params;
+    const startSessionDataDTO = new StartWorkoutSessionDTO(startSessionData);
     const updatedWorkoutSession = await WorkoutSessionRepository.findOne({
-      _id: startSessionData._id,
+      _id: startSessionDataDTO.id,
     });
     if (!updatedWorkoutSession) {
       throw new APIError("Wokrout session not found", 404);
     }
+    if (
+      session === "start" &&
+      !startSessionDataDTO.startTime &&
+      startSessionDataDTO.endTime
+    ) {
+      throw new APIError("End time is provided but the session is start", 400);
+    }
+    if (session === "start" && !startSessionDataDTO.startTime) {
+      throw new APIError(
+        "Start time is empty please provide the start time",
+        400
+      );
+    }
+    if (
+      session === "end" &&
+      !startSessionDataDTO.endTime &&
+      startSessionDataDTO.startTime
+    ) {
+      throw new APIError("Start time is provided but the session is end", 400);
+    }
+    if (session === "end" && !startSessionDataDTO.endTime) {
+      throw new APIError("End time is empty please provide the End time", 400);
+    }
     session === "start"
-      ? (updatedWorkoutSession.startTime = startSessionData.startTime)
-      : (updatedWorkoutSession.endTime = startSessionData.endTime);
+      ? (updatedWorkoutSession.startTime = startSessionDataDTO.startTime)
+      : (updatedWorkoutSession.endTime = startSessionDataDTO.endTime);
     await updatedWorkoutSession.save();
     return updatedWorkoutSession;
   } catch (err) {

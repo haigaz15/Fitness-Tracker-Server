@@ -10,9 +10,10 @@ const createWorkoutSession = async (req, res, next) => {
   }
 };
 
-const startWorkoutSession = async (req, res, next) => {
+const startEndWorkoutSession = async (req, res, next) => {
   try {
-    await WorkoutSessionService.startWorkoutSession(req, res);
+    const sessionUpdate = await WorkoutSessionService.startEndWorkoutSession(req, res);
+    res.send(sessionUpdate)
   } catch (err) {
     next(err);
   }
@@ -45,6 +46,6 @@ const retrieveWorkoutSessions = async (req, res, next) => {
 module.exports = {
   createWorkoutSession,
   retrieveWorkoutSession,
-  startWorkoutSession,
+  startEndWorkoutSession,
   retrieveWorkoutSessions,
 };

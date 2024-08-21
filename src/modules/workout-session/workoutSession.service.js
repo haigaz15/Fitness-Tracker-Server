@@ -1,9 +1,9 @@
 const WorkoutSessionRepository = require("../../repositories/workoutSessionRepository");
 const APIError = require("../../core/api-errors");
+const mongoose = require("mongoose");
 const createWorkoutSession = async (req, res) => {
   try {
     const workoutSessionData = req.body;
-    console.log(workoutSessionData)
     await WorkoutSessionRepository.createOne({
       workoutDate: workoutSessionData.workoutDate,
       exercises: workoutSessionData.exercises,
@@ -13,17 +13,20 @@ const createWorkoutSession = async (req, res) => {
   }
 };
 
-const startWorkoutSession = async (req, res) => {
+const startEndWorkoutSession = async (req, res) => {
   try {
     const startSessionData = req.body;
-    const updatedWorkoutSession =
-      await WorkoutSessionRepository.findOneAndUpdate(
-        { _id: startSessionData.id },
-        startSessionData.updatedFields
-      );
+    const { session } = req.params;
+    const updatedWorkoutSession = await WorkoutSessionRepository.findOne({
+      _id: startSessionData._id,
+    });
     if (!updatedWorkoutSession) {
       throw new APIError("Wokrout session not found", 404);
     }
+    session === "start"
+      ? (updatedWorkoutSession.startTime = startSessionData.startTime)
+      : (updatedWorkoutSession.endTime = startSessionData.endTime);
+    await updatedWorkoutSession.save();
     return updatedWorkoutSession;
   } catch (err) {
     throw err;
@@ -50,14 +53,14 @@ const retrieveWorkoutSessions = async (req, res) => {
     if (!workoutSessions && workoutSession.length === 0) {
       throw new APIError("Workout session not found", 404);
     }
-    return workoutSessions
+    return workoutSessions;
   } catch (err) {
     throw err;
   }
 };
 module.exports = {
   createWorkoutSession,
-  startWorkoutSession,
+  startEndWorkoutSession,
   retrieveWorkoutSessions,
   retrieveWorkoutSession,
 };

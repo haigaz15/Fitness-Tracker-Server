@@ -5,8 +5,8 @@ const createOne = async (data) => {
   await workoutSession.save();
 };
 
-const findOneAndUpdate = async (query, updatedFields) => {
-  await WorkoutSession.findOneAndUpdate(
+const findByIdAndUpdate = async (query, updatedFields) => {
+  await WorkoutSession.findByIdAndUpdate(
     query,
     { $set: updatedFields },
     { new: true }
@@ -19,4 +19,4 @@ const findAll = async (query) => {
 const findOne = async (query) => {
   return await WorkoutSession.findOne(query);
 };
-module.exports = { createOne, findAll, findOneAndUpdate, findOne };
+module.exports = { createOne, findAll, findByIdAndUpdate, findOne };

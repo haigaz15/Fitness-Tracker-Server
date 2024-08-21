@@ -1,6 +1,6 @@
 const WorkoutSessionRepository = require("../../repositories/workoutSessionRepository");
 const APIError = require("../../core/api-errors");
-const mongoose = require("mongoose");
+
 const {
   ExerciseParentDTO,
   ExerciseDTO,

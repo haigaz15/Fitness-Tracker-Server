@@ -6,6 +6,9 @@ const UserSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
+  workoutSession: [
+    { type: mongoose.Schema.Types.ObjectId, ref: "workout-session" },
+  ],
   chestSize: { type: Number },
   upperChestSize: { type: Number },
   lowerChestSize: { type: Number },

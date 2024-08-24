@@ -10,6 +10,7 @@ class CreateWorkoutSessionDTO {
   constructor(data) {
     this.workoutDate = data.workoutDate;
     this.exercises = data.exercises;
+    this.user = data.user;
   }
 }
 

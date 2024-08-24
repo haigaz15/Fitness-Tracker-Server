@@ -22,6 +22,7 @@ const WorkoutSessionSchema = new mongoose.Schema({
     },
   ],
   notes: { type: String },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 const WorkoutSession = mongoose.model("workout-session", WorkoutSessionSchema);

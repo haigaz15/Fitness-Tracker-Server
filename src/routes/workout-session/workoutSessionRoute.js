@@ -3,7 +3,11 @@ const WorkoutSessionController = require("../../modules/workout-session/workoutS
 const authMiddleWare = require("../../middlewares/authMiddleware");
 const router = express.Router();
 
-router.post("/workout-session", WorkoutSessionController.createWorkoutSession);
+router.post(
+  "/workout-session",
+  authMiddleWare,
+  WorkoutSessionController.createWorkoutSession
+);
 
 router.get(
   "/workout-sessions",

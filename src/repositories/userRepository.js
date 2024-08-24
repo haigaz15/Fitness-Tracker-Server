@@ -9,4 +9,8 @@ const findOne = async (query) => {
   return await User.findOne(query);
 };
 
-module.exports = { createOne, findOne };
+const findByIdAndUpdate = async (query, data) => {
+  await User.findByIdAndUpdate(query, data);
+};
+
+module.exports = { createOne, findOne, findByIdAndUpdate };

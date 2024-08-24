@@ -7,6 +7,7 @@ const {
   StartWorkoutSessionDTO,
 } = require("./dto/workoutSession.dto");
 const { ExerciseDTO } = require("../exercise-library/dto/exerciseLibraryDTO");
+const UserRepository = require("../../repositories/userRepository");
 const createWorkoutSession = async (req, res) => {
   try {
     const workoutSessionData = req.body;
@@ -18,13 +19,18 @@ const createWorkoutSession = async (req, res) => {
       };
       return new ExerciseParentDTO(exerciseParent);
     });
-
-    await WorkoutSessionRepository.createOne(
+    const user = await UserRepository.findOne({ username: req.user.username });
+    const workoutSession = await WorkoutSessionRepository.createOne(
       new CreateWorkoutSessionDTO({
         workoutDate: workoutSessionData.workoutDate,
         exercises: exercises,
+        user: user.id,
       })
     );
+
+    await UserRepository.findByIdAndUpdate(user.id, {
+      $push: { workoutSession: workoutSession._id },
+    });
   } catch (err) {
     throw err;
   }

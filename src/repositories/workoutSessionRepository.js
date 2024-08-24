@@ -3,6 +3,7 @@ const { WorkoutSession } = require("../db/schemas/workoutSession");
 const createOne = async (data) => {
   const workoutSession = new WorkoutSession(data);
   await workoutSession.save();
+  return workoutSession;
 };
 
 const findByIdAndUpdate = async (query, updatedFields) => {

@@ -17,6 +17,7 @@ router.get(
 
 router.put(
   "/workout-session/:session",
+  authMiddleWare,
   WorkoutSessionController.startEndWorkoutSession
 );
 

@@ -6,6 +6,8 @@ const UserSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
+  weight: { type: Number },
+  heigth: { type: Number },
   workoutSession: [
     { type: mongoose.Schema.Types.ObjectId, ref: "workout-session" },
   ],

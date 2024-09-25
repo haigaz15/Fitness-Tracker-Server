@@ -7,7 +7,6 @@ dotenv.config();
 // const db = require("./db/db");
 import errorMiddleWare from './middlewares/errorMiddleware';
 const app = express();
-
 app.use(express.json());
 app.use(exerciseLibraryRouter);
 app.use(workoutSessionRouter);

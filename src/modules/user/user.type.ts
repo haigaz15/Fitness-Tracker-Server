@@ -1,6 +1,6 @@
 import { Prisma, User } from '@prisma/client';
 
-export type IUser = User;
+export type IUser = Omit<User, 'id'>;
 
 export type IUserWhereInput = Prisma.UserWhereInput;
 

@@ -33,12 +33,6 @@ export const exerciseTypes: Record<EquipmentType, string> = {
    all: 'all',
 };
 
-// export interface IExercise {
-//    name: string;
-//    type: string;
-//    description: string;
-// }
-
 export type IExerciseWhereInput = Prisma.ExerciseWhereInput;
 
 export type IExerciseWhereUniqueInput = Prisma.ExerciseWhereUniqueInput;

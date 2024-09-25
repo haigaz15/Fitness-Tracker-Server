@@ -1,6 +1,6 @@
 import { Prisma, WorkoutSession } from '@prisma/client';
 
-export type IWorkoutSession = WorkoutSession;
+export type IWorkoutSession = Omit<WorkoutSession, 'id'>;
 
 export type ICreateWorkoutSession = Prisma.WorkoutSessionCreateInput;
 

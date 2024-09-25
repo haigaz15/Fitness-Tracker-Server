@@ -1,0 +1,77 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ExerciseOnWorkoutSession {
+  id               String         @id @default(auto()) @map("_id") @db.ObjectId
+  exercise         Exercise       @relation(fields: [exerciseId], references: [id])
+  exerciseId       String         @db.ObjectId
+  workoutSession   WorkoutSession @relation(fields: [workoutSessionId], references: [id])
+  workoutSessionId String         @db.ObjectId
+  set              Int
+  reps             String
+}
+
+model Exercise {
+  id              String                     @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  type            String
+  description     String
+  workoutSessions ExerciseOnWorkoutSession[]
+}
+
+model WorkoutSession {
+  id          String                     @id @default(auto()) @map("_id") @db.ObjectId
+  startTime   DateTime?
+  endTime     DateTime?
+  workoutDate DateTime?
+  exercises   ExerciseOnWorkoutSession[]
+  notes       String?
+  user        User                       @relation(fields: [userId], references: [id])
+  userId      String                     @db.ObjectId
+}
+
+model User {
+  id               String           @id @default(auto()) @map("_id") @db.ObjectId
+  firstName        String
+  lastName         String
+  username         String           @unique
+  email            String
+  password         String
+  weight           Float?
+  height           Float?
+  workoutSessions  WorkoutSession[]
+  bodyMuscleSizeId String           @db.ObjectId
+  bodyMuscleSize   BodyMuscleSize?  @relation(fields: [bodyMuscleSizeId], references: [id])
+}
+
+model BodyMuscleSize {
+  id             String @id @default(auto()) @map("_id") @db.ObjectId
+  chestSize      Float?
+  upperChestSize Float?
+  lowerChestSize Float?
+  shouldersSize  Float?
+  frontDeltsSize Float?
+  sideDeltsSize  Float?
+  rearDeltsSize  Float?
+  trapsSize      Float?
+  latsSize       Float?
+  midBackSize    Float?
+  lowerBackSize  Float?
+  bicepsSize     Float?
+  tricepsSize    Float?
+  forearmsSize   Float?
+  absSize        Float?
+  obliquesSize   Float?
+  glutesSize     Float?
+  quadsSize      Float?
+  hamstringsSize Float?
+  adductorsSize  Float?
+  calvesSize     Float?
+  user           User[]
+}

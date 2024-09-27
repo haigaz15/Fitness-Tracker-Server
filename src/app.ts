@@ -4,7 +4,7 @@ import workoutSessionRouter from './routes/workout-session/workoutSessionRoute';
 import authRourter from './routes/auth/authRoute';
 import dotenv from 'dotenv';
 dotenv.config();
-// const db = require("./db/db");
+
 import errorMiddleWare from './middlewares/errorMiddleware';
 const app = express();
 app.use(express.json());

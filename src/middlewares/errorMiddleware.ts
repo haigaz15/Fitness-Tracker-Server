@@ -1,4 +1,6 @@
 import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
+import logger from '../util/logger';
+import HTTP_ERROR_STATUS, { HTTP_ERROR_MESSAGES } from '../core/error-enums';
 
 const errorMiddleWare: ErrorRequestHandler = (
    err: any,
@@ -6,12 +8,12 @@ const errorMiddleWare: ErrorRequestHandler = (
    res: Response,
    next: NextFunction
 ) => {
-   console.log(err.stack);
-   const statusCode = err.statusCode || 500;
+   logger.error(err.stack);
+   const statusCode = err.statusCode || HTTP_ERROR_STATUS.INTERNAL_SERVER;
    const message =
-      statusCode === 500
-         ? 'Internal Server Error'
-         : err.message || 'Internal Server Error';
+      statusCode === HTTP_ERROR_STATUS.INTERNAL_SERVER
+         ? HTTP_ERROR_MESSAGES.INTERNAL_SERVER_ERROR
+         : err.message || HTTP_ERROR_MESSAGES.INTERNAL_SERVER_ERROR;
 
    res.status(statusCode).json({ error: { message, statusCode } });
 };

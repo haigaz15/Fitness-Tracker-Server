@@ -4,6 +4,8 @@ import { Request, Response } from 'express';
 import { ExerciseDTO } from '../exercise-library/dto/exerciseLibraryDTO';
 import UserRepository from '../../repositories/userRepository';
 import { IWorkoutSession } from './workout-session.type';
+import { notFoundError } from '../../core/error-list';
+import { CUSTOM_ERROR_MESSAGES } from '../../core/error-enums';
 const createWorkoutSession = async (req: Request, res: Response) => {
    try {
       // const workoutSessionData = req.body;
@@ -93,7 +95,7 @@ const retrieveWorkoutSession = async (req: Request, res: Response) => {
          id: workoutSessionId,
       });
       if (!workoutSession) {
-         throw new APIError('Workout session not found', 404);
+         throw notFoundError(CUSTOM_ERROR_MESSAGES.WORKOUT_SESSION_NOT_FOUND);
       }
    } catch (err) {
       throw err;
@@ -105,7 +107,7 @@ const retrieveWorkoutSessions = async (req: Request, res: Response) => {
       const workoutSessions: IWorkoutSession[] =
          await WorkoutSessionRepository.findAll();
       if (!workoutSessions || workoutSessions.length === 0) {
-         throw new APIError('Workout session not found', 404);
+         throw notFoundError(CUSTOM_ERROR_MESSAGES.WORKOUT_SESSIONS_NOT_FOUND);
       }
       return workoutSessions;
    } catch (err) {

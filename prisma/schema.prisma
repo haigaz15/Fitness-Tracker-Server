@@ -23,6 +23,8 @@ model Exercise {
   type            String
   description     String
   workoutSessions ExerciseOnWorkoutSession[]
+
+  @@unique([name])
 }
 
 model WorkoutSession {

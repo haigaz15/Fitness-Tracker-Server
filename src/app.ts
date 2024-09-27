@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import errorMiddleWare from './middlewares/errorMiddleware';
+import logger from './util/logger';
 const app = express();
 app.use(express.json());
 app.use(exerciseLibraryRouter);
@@ -14,12 +15,11 @@ app.use(authRourter);
 app.use(errorMiddleWare);
 async function initializeServer() {
    try {
-      // await db.run();
       app.listen(process.env.PORT, () => {
-         console.log(`Listing to PORT ${process.env.PORT}`);
+         logger.info(`Listing to PORT ${process.env.PORT}`);
       });
    } catch (error) {
-      console.error('Failed to initilze the server', error);
+      logger.error('Failed to initilze the server', error);
    }
 }
 

@@ -13,6 +13,9 @@ export enum CUSTOM_ERROR_MESSAGES {
    WORKOUT_SESSION_EXIST = 'Workout session already exist! Please try with different values',
    WORKOUT_SESSION_NOT_FOUND = 'Workout Session could not be found! Please re-check your data',
    WORKOUT_SESSIONS_NOT_FOUND = 'Workouot Sessions could not be found! Please re-check your data',
+   USER_ALREADY_EXIST = 'User with sent username already exist',
+   USER_DATA_MISSING_OR_WORNG = 'Either firstName, lastName, username, email, password or all are missing please fill before proceeding',
+   MISSING_EXERCISE = 'Some exercises are missing please check again',
 }
 
 export enum HTTP_ERROR_MESSAGES {

@@ -5,24 +5,23 @@ import jwt from 'jsonwebtoken';
 import APIError from '../../core/api-errors';
 import UserRepository from '../../repositories/userRepository';
 import dotenv from 'dotenv';
+import { badRequestError, conflictError } from '../../core/error-list';
+import { CUSTOM_ERROR_MESSAGES } from '../../core/error-enums';
 dotenv.config();
 const signUp = async (req: Request, res: Response) => {
    try {
       const { firstName, lastName, username, email, password } = req.body;
-      console.log(firstName);
       if (!firstName || !lastName || !username || !email || !password) {
-         throw new APIError(
-            'Either firstName, lastName, username, email, password or all are missing please fill before proceeding',
-            400
+         throw badRequestError(
+            CUSTOM_ERROR_MESSAGES.USER_DATA_MISSING_OR_WORNG
          );
       }
       const user = await UserRepository.findOne({ username: username });
       if (user) {
-         throw new APIError(`User with ${user.username} already exist`, 400);
+         throw conflictError(CUSTOM_ERROR_MESSAGES.USER_ALREADY_EXIST);
       }
       const saltRounds = 10;
       const hashedPass = await bcrypt.hash(password, saltRounds);
-      console.log(hashedPass);
       const u = new SignUpDTO({
          firstName: firstName,
          lastName: lastName,
@@ -30,7 +29,7 @@ const signUp = async (req: Request, res: Response) => {
          email: email,
          password: hashedPass,
       });
-
+      console.log(u);
       await UserRepository.createOne(u);
    } catch (err) {
       throw err;

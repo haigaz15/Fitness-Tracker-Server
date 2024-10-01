@@ -1,5 +1,4 @@
-import { IUserCreateInput } from '../../user/user.type';
-import { ILoginInterface } from '../auth.type';
+import { LoginEntity, SignUpEntity } from '../auth.type';
 
 export class SignUpDTO {
    firstName: string;
@@ -7,7 +6,7 @@ export class SignUpDTO {
    username: string;
    email: string;
    password: string;
-   constructor(data: IUserCreateInput) {
+   constructor(data: SignUpEntity) {
       this.firstName = data.firstName;
       this.lastName = data.lastName;
       this.username = data.username;
@@ -19,7 +18,7 @@ export class SignUpDTO {
 export class LogInDTO {
    username: string;
    password: string;
-   constructor(data: ILoginInterface) {
+   constructor(data: LoginEntity) {
       this.username = data.username;
       this.password = data.password;
    }

@@ -1,24 +1,35 @@
-// import { IExercise, IExerciseOnWorkout } from "../../exercise-library/exercise.type";
-// import { ICreateWorkoutSession } from "../workout-session.type";
+interface CreateWorkoutSessionInput {
+   workoutDate: Date;
+   exercises: WorkoutSessionExerciseDTO[];
+   userId: String | undefined;
+}
+export class CreateWorkoutSessionDTO {
+   workoutDate: Date;
+   exercises: WorkoutSessionExerciseDTO[];
+   userId: String | undefined;
+   constructor(data: CreateWorkoutSessionInput) {
+      this.workoutDate = data.workoutDate;
+      this.exercises = data.exercises;
+      this.userId = data.userId;
+   }
+}
 
-// export class ExerciseParentDTO {
-//    constructor(exerciseParent) {
-//       this.exercise = exerciseParent.exercise;
-//       this.set = exerciseParent.set;
-//       this.reps = exerciseParent.reps;
-//    }
-// }
+export interface WorkoutSessionExerciseInput {
+   exerciseName: string;
+   set: string;
+   reps: string;
+}
 
-// export class CreateWorkoutSessionDTO {
-//    workoutDate: Date | string | null|undefined;
-//    exercises:IExerciseOnWorkout | undefined;
-//    user:any;
-//    constructor(data:ICreateWorkoutSession) {
-//       this.workoutDate = data.workoutDate;
-//       this.exercises = data.exercises;
-//       this.user = data.user;
-//    }
-// }
+export class WorkoutSessionExerciseDTO {
+   exerciseName: string;
+   set: string;
+   reps: string;
+   constructor(data: WorkoutSessionExerciseInput) {
+      this.exerciseName = data.exerciseName;
+      this.set = data.set;
+      this.reps = data.reps;
+   }
+}
 
 // export class StartWorkoutSessionDTO {
 //    constructor(data) {

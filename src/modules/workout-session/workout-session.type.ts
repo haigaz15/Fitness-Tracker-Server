@@ -1,12 +1,7 @@
-import { Prisma, WorkoutSession } from '@prisma/client';
+import { ExerciseEntity } from '../exercise-library/exercise.type';
 
-export type IWorkoutSession = Omit<WorkoutSession, 'id'>;
-
-export type ICreateWorkoutSession = Prisma.WorkoutSessionCreateInput;
-
-export type IUpdateWorkoutSession = Prisma.WorkoutSessionUpdateInput;
-
-export type IWorkoutSessionWhereInput = Prisma.WorkoutSessionWhereInput;
-
-export type IWorkoutSessionWhereUniqueInput =
-   Prisma.WorkoutSessionWhereUniqueInput;
+export interface WorkoutSessionExercise {
+   exercise: ExerciseEntity;
+   set: string;
+   reps: string;
+}

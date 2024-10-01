@@ -1,5 +1,5 @@
 import ExerciseRepository from '../../repositories/exerciseRepository';
-import { EquipmentType, IExercise, exerciseTypes } from './exercise.type';
+import { PrismaExercise } from './exercise.prisma.type';
 import APIError from '../../core/api-errors';
 import { ExerciseDTO } from './dto/exerciseLibraryDTO';
 import { Request, Response } from 'express';
@@ -9,6 +9,7 @@ import {
    notFoundError,
 } from '../../core/error-list';
 import { CUSTOM_ERROR_MESSAGES } from '../../core/error-enums';
+import { EquipmentType, ExerciseEntity, exerciseTypes } from './exercise.type';
 const getExercisesByType = async (req: Request, res: Response) => {
    try {
       const { type } = req.params;
@@ -22,7 +23,7 @@ const getExercisesByType = async (req: Request, res: Response) => {
       if (exercises?.length === 0 || !exercises) {
          throw notFoundError(CUSTOM_ERROR_MESSAGES.EXERCISE_NOT_FOUND);
       }
-      return exercises.map((exercise: IExercise) => {
+      return exercises.map((exercise: ExerciseEntity) => {
          return {
             name: exercise.name,
             type: exercise.type,

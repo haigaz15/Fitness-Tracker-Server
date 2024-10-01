@@ -1,35 +1,66 @@
 import WorkoutSessionRepository from '../../repositories/workoutSessionRepository';
-import APIError from '../../core/api-errors';
-import { Request, Response } from 'express';
-import { ExerciseDTO } from '../exercise-library/dto/exerciseLibraryDTO';
 import UserRepository from '../../repositories/userRepository';
-import { IWorkoutSession } from './workout-session.type';
-import { notFoundError } from '../../core/error-list';
+import ExerciseOnWorkoutSession from '../../repositories/exerciseOnWorkoutRepository';
+import ExerciseRepository from '../../repositories/exerciseRepository';
+import { Request, Response } from 'express';
+import { PrismaWorkoutSession } from './workout-session.prisma.type';
+import { badRequestError, notFoundError } from '../../core/error-list';
 import { CUSTOM_ERROR_MESSAGES } from '../../core/error-enums';
-const createWorkoutSession = async (req: Request, res: Response) => {
+import { WorkoutSessionExercise } from './workout-session.type';
+import { GetUserAuthInfoRequest } from '../../global-types/request.type';
+import {
+   CreateWorkoutSessionDTO,
+   WorkoutSessionExerciseDTO,
+   WorkoutSessionExerciseInput,
+} from './dto/workoutSession.dto';
+const createWorkoutSession = async (
+   req: GetUserAuthInfoRequest,
+   res: Response
+) => {
    try {
-      // const workoutSessionData = req.body;
-      // const exercises = workoutSessionData.exercises.map((e) => {
-      //    const exerciseParent = {
-      //       exercise: new ExerciseDTO(e.exercise),
-      //       set: e.set,
-      //       reps: e.reps,
-      //    };
-      //    return new ExerciseParentDTO(exerciseParent);
-      // });
-      // const user = await UserRepository.findOne({
-      //    username: req.user.username,
-      // });
-      // const workoutSession = await WorkoutSessionRepository.createOne(
-      //    new CreateWorkoutSessionDTO({
-      //       workoutDate: workoutSessionData.workoutDate,
-      //       exercises: exercises,
-      //       user: user.id,
-      //    })
-      // );
-      // await UserRepository.findByIdAndUpdate(user?.id, {
-      //    $push: { workoutSession: workoutSession.id },
-      // });
+      const workoutSessionData = req.body;
+      const exercises = workoutSessionData.exercises.map(
+         (exercise: WorkoutSessionExerciseInput) => {
+            return new WorkoutSessionExerciseDTO(exercise);
+         }
+      );
+      const user = await UserRepository.findOne({
+         username: req.user.username,
+      });
+
+      const w = new CreateWorkoutSessionDTO({
+         workoutDate: workoutSessionData.workoutDate,
+         exercises: exercises,
+         userId: user?.id,
+      });
+      const workoutSession = await WorkoutSessionRepository.createOne({
+         workoutDate: w.workoutDate,
+         user: {
+            connect: { id: w.userId as string },
+         },
+      });
+      const exerciseNames = exercises.map(
+         (exercise: WorkoutSessionExerciseInput) => exercise.exerciseName
+      );
+      const dbExercises = await ExerciseRepository.findAll({
+         name: { in: exerciseNames },
+      });
+      if (!dbExercises || dbExercises.length === 0) {
+         throw notFoundError(CUSTOM_ERROR_MESSAGES.EXERCISE_NOT_FOUND);
+      }
+      if (dbExercises.length !== exercises.length) {
+         throw badRequestError(CUSTOM_ERROR_MESSAGES.MISSING_EXERCISE);
+      }
+      await ExerciseOnWorkoutSession.createMany(
+         dbExercises?.map((e: any, index: number) => {
+            return {
+               set: exercises[index].set,
+               reps: exercises[index].reps,
+               workoutSessionId: workoutSession.id,
+               exerciseId: e.id,
+            };
+         })
+      );
    } catch (err) {
       throw err;
    }
@@ -104,7 +135,7 @@ const retrieveWorkoutSession = async (req: Request, res: Response) => {
 
 const retrieveWorkoutSessions = async (req: Request, res: Response) => {
    try {
-      const workoutSessions: IWorkoutSession[] =
+      const workoutSessions: PrismaWorkoutSession[] =
          await WorkoutSessionRepository.findAll();
       if (!workoutSessions || workoutSessions.length === 0) {
          throw notFoundError(CUSTOM_ERROR_MESSAGES.WORKOUT_SESSIONS_NOT_FOUND);

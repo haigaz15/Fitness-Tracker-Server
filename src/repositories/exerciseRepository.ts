@@ -1,31 +1,36 @@
 import prisma from '../core/prisma-client';
 import {
-   IExercise,
-   IExerciseWhereInput,
-   IExerciseWhereUniqueInput,
-} from '../modules/exercise-library/exercise.type';
+   PrismaCreateExercise,
+   PrismaExercise,
+   PrismaExerciseWhereInput,
+   PrismaExerciseWhereUniqueInput,
+} from '../modules/exercise-library/exercise.prisma.type';
 
 const findOne = async (
-   query: IExerciseWhereUniqueInput
-): Promise<IExercise | null> => {
+   query: PrismaExerciseWhereUniqueInput
+): Promise<PrismaExercise | null> => {
    return await prisma.exercise.findUnique({
       where: query,
    });
 };
 
 const findAll = async (
-   query: IExerciseWhereInput
-): Promise<IExercise[] | null> => {
+   query: PrismaExerciseWhereInput
+): Promise<PrismaExercise[] | null> => {
    return await prisma.exercise.findMany({
       where: query,
    });
 };
 
-const createOne = async (data: IExercise): Promise<IExercise> => {
+const createOne = async (
+   data: PrismaCreateExercise
+): Promise<PrismaExercise> => {
    return prisma.exercise.create({ data });
 };
 
-const insertMany = async (data: IExercise[]): Promise<{ count: number }> => {
+const insertMany = async (
+   data: PrismaExercise[]
+): Promise<{ count: number }> => {
    return await prisma.exercise.createMany({ data });
 };
 

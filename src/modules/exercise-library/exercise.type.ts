@@ -1,5 +1,3 @@
-import { Exercise, ExerciseOnWorkoutSession, Prisma } from '@prisma/client';
-
 export enum ExerciseTypeEnum {
    barbell = 'barbell',
    dumbbell = 'dumbbell',
@@ -33,12 +31,8 @@ export const exerciseTypes: Record<EquipmentType, string> = {
    all: 'all',
 };
 
-export type IExerciseWhereInput = Prisma.ExerciseWhereInput;
-
-export type IExerciseWhereUniqueInput = Prisma.ExerciseWhereUniqueInput;
-
-export type IExercise = Omit<Exercise, 'id'>;
-
-export type ICreateExercise = Prisma.ExerciseCreateInput;
-
-export type IExerciseOnWorkout = ExerciseOnWorkoutSession;
+export interface ExerciseEntity {
+   name: string;
+   type: string;
+   description: string;
+}

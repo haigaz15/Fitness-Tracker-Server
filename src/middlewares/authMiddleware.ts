@@ -1,10 +1,10 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
-import { IGetUserAuthInfoRequest } from '../types/request.type';
+import { NextFunction, Response } from 'express';
+import { GetUserAuthInfoRequest } from '../global-types/request.type';
 import APIError from '../core/api-errors';
 import jwt from 'jsonwebtoken';
 require('dotenv').config();
 const authMiddleWare = async (
-   req: IGetUserAuthInfoRequest,
+   req: GetUserAuthInfoRequest,
    res: Response,
    next: NextFunction
 ) => {

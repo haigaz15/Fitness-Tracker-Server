@@ -1,22 +1,22 @@
 import prisma from '../core/prisma-client';
 import {
-   ICreateWorkoutSession,
-   IUpdateWorkoutSession,
-   IWorkoutSession,
-   IWorkoutSessionWhereInput,
-   IWorkoutSessionWhereUniqueInput,
-} from '../modules/workout-session/workout-session.type';
+   PrismaCreateWorkoutSession,
+   PrismaUpdateWorkoutSession,
+   PrismaWorkoutSession,
+   PrismaWorkoutSessionWhereInput,
+   PrismaWorkoutSessionWhereUniqueInput,
+} from '../modules/workout-session/workout-session.prisma.type';
 
 const createOne = async (
-   data: ICreateWorkoutSession
-): Promise<IWorkoutSession> => {
+   data: PrismaCreateWorkoutSession
+): Promise<PrismaWorkoutSession> => {
    return await prisma.workoutSession.create({ data });
 };
 
 const findByIdAndUpdate = async (
-   query: IWorkoutSessionWhereUniqueInput,
-   updatedFields: IUpdateWorkoutSession
-): Promise<IWorkoutSession> => {
+   query: PrismaWorkoutSessionWhereUniqueInput,
+   updatedFields: PrismaUpdateWorkoutSession
+): Promise<PrismaWorkoutSession> => {
    return await prisma.workoutSession.update({
       where: query,
       data: updatedFields,
@@ -24,13 +24,13 @@ const findByIdAndUpdate = async (
 };
 
 const findAll = async (
-   query?: IWorkoutSessionWhereInput
-): Promise<IWorkoutSession[]> => {
+   query?: PrismaWorkoutSessionWhereInput
+): Promise<PrismaWorkoutSession[]> => {
    return await prisma.workoutSession.findMany({ where: query });
 };
 const findOne = async (
-   query: IWorkoutSessionWhereUniqueInput
-): Promise<IWorkoutSession | null> => {
+   query: PrismaWorkoutSessionWhereUniqueInput
+): Promise<PrismaWorkoutSession | null> => {
    return await prisma.workoutSession.findUnique({ where: query });
 };
 export default { createOne, findAll, findByIdAndUpdate, findOne };

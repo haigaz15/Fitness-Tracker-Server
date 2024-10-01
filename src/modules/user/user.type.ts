@@ -1,11 +1,9 @@
-import { Prisma, User } from '@prisma/client';
-
-export type IUser = Omit<User, 'id'>;
-
-export type IUserWhereInput = Prisma.UserWhereInput;
-
-export type IUserWhereUniqueInput = Prisma.UserWhereUniqueInput;
-
-export type IUserCreateInput = Prisma.UserCreateInput;
-
-export type IUserUpdateInput = Prisma.UserUpdateInput;
+export interface UserEntity {
+   firstName: string;
+   lastName: string;
+   username: string;
+   email: string;
+   password: string;
+   weight: number | null;
+   height: number | null;
+}

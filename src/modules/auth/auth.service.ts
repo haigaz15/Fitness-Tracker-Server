@@ -56,7 +56,10 @@ const logIn = async (req: Request, res: Response) => {
       }
       let token;
       if (process.env.JWT_SECRET) {
-         token = await jwt.sign({ username: username }, process.env.JWT_SECRET);
+         token = await jwt.sign(
+            { username: username, role: user.role },
+            process.env.JWT_SECRET
+         );
       }
 
       return token;

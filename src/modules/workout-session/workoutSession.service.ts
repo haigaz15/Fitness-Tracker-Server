@@ -5,11 +5,14 @@ import ExerciseRepository from '../../repositories/exerciseRepository';
 import { Request, Response } from 'express';
 import { PrismaWorkoutSession } from './workout-session.prisma.type';
 import { badRequestError, notFoundError } from '../../core/error-list';
-import { CUSTOM_ERROR_MESSAGES } from '../../core/error-enums';
-import { WorkoutSessionExercise } from './workout-session.type';
+import {
+   CUSTMO_WORKOUT_SESSION_ERROR_MESSAGES,
+   CUSTOM_EXERCISE_ERROR_MESSAGES,
+} from '../../core/error-enums';
 import { GetUserAuthInfoRequest } from '../../global-types/request.type';
 import {
    CreateWorkoutSessionDTO,
+   StartWorkoutSessionDTO,
    WorkoutSessionExerciseDTO,
    WorkoutSessionExerciseInput,
 } from './dto/workoutSession.dto';
@@ -46,10 +49,10 @@ const createWorkoutSession = async (
          name: { in: exerciseNames },
       });
       if (!dbExercises || dbExercises.length === 0) {
-         throw notFoundError(CUSTOM_ERROR_MESSAGES.EXERCISE_NOT_FOUND);
+         throw notFoundError(CUSTOM_EXERCISE_ERROR_MESSAGES.EXERCISE_NOT_FOUND);
       }
       if (dbExercises.length !== exercises.length) {
-         throw badRequestError(CUSTOM_ERROR_MESSAGES.MISSING_EXERCISE);
+         throw badRequestError(CUSTOM_EXERCISE_ERROR_MESSAGES.MISSING_EXERCISE);
       }
       await ExerciseOnWorkoutSession.createMany(
          dbExercises?.map((e: any, index: number) => {
@@ -68,52 +71,58 @@ const createWorkoutSession = async (
 
 const startEndWorkoutSession = async (req: Request, res: Response) => {
    try {
-      // const startSessionData = req.body;
-      // const { session } = req.params;
-      // const startSessionDataDTO = new StartWorkoutSessionDTO(startSessionData);
-      // const updatedWorkoutSession = await WorkoutSessionRepository.findOne({
-      //    _id: startSessionDataDTO.id,
-      // });
-      // if (!updatedWorkoutSession) {
-      //    throw new APIError('Wokrout session not found', 404);
-      // }
-      // if (
-      //    session === 'start' &&
-      //    !startSessionDataDTO.startTime &&
-      //    startSessionDataDTO.endTime
-      // ) {
-      //    throw new APIError(
-      //       'End time is provided but the session is start',
-      //       400
-      //    );
-      // }
-      // if (session === 'start' && !startSessionDataDTO.startTime) {
-      //    throw new APIError(
-      //       'Start time is empty please provide the start time',
-      //       400
-      //    );
-      // }
-      // if (
-      //    session === 'end' &&
-      //    !startSessionDataDTO.endTime &&
-      //    startSessionDataDTO.startTime
-      // ) {
-      //    throw new APIError(
-      //       'Start time is provided but the session is end',
-      //       400
-      //    );
-      // }
-      // if (session === 'end' && !startSessionDataDTO.endTime) {
-      //    throw new APIError(
-      //       'End time is empty please provide the End time',
-      //       400
-      //    );
-      // }
-      // session === 'start'
-      //    ? (updatedWorkoutSession.startTime = startSessionDataDTO.startTime)
-      //    : (updatedWorkoutSession.endTime = startSessionDataDTO.endTime);
-      // await updatedWorkoutSession.save();
-      // return updatedWorkoutSession;
+      const startSessionData = req.body;
+      const { session } = req.params;
+      const startSession = new StartWorkoutSessionDTO(startSessionData);
+      const WorkoutSession = await WorkoutSessionRepository.findOne({
+         id: startSession.id,
+      });
+      if (!WorkoutSession) {
+         throw notFoundError(
+            CUSTMO_WORKOUT_SESSION_ERROR_MESSAGES.WORKOUT_SESSIONS_NOT_FOUND
+         );
+      }
+      if (
+         session === 'start' &&
+         !startSession.startTime &&
+         startSession.endTime
+      ) {
+         throw badRequestError(
+            CUSTMO_WORKOUT_SESSION_ERROR_MESSAGES.WORKOUT_SESSION_UPDATE_START_NOT_END
+         );
+      }
+      if (session === 'start' && !startSession.startTime) {
+         throw badRequestError(
+            CUSTMO_WORKOUT_SESSION_ERROR_MESSAGES.WORKOUT_SESSION_UPDATE_NO_START
+         );
+      }
+      if (
+         session === 'end' &&
+         !startSession.endTime &&
+         startSession.startTime
+      ) {
+         throw badRequestError(
+            CUSTMO_WORKOUT_SESSION_ERROR_MESSAGES.WORKOUT_SESSION_UPDATE_END_NOT_START
+         );
+      }
+      if (session === 'end' && !startSession.endTime) {
+         badRequestError(
+            CUSTMO_WORKOUT_SESSION_ERROR_MESSAGES.WORKOUT_SESSION_UPDATE_NO_END
+         );
+      }
+      let updatedWorkoutSession;
+      if (session === 'start') {
+         updatedWorkoutSession = WorkoutSessionRepository.updateOne(
+            { id: WorkoutSession.id },
+            { startTime: startSessionData.startTime }
+         );
+      } else {
+         updatedWorkoutSession = WorkoutSessionRepository.updateOne(
+            { id: WorkoutSession.id },
+            { endTime: startSessionData.endTime }
+         );
+      }
+      return updatedWorkoutSession;
    } catch (err) {
       throw err;
    }
@@ -126,7 +135,9 @@ const retrieveWorkoutSession = async (req: Request, res: Response) => {
          id: workoutSessionId,
       });
       if (!workoutSession) {
-         throw notFoundError(CUSTOM_ERROR_MESSAGES.WORKOUT_SESSION_NOT_FOUND);
+         throw notFoundError(
+            CUSTMO_WORKOUT_SESSION_ERROR_MESSAGES.WORKOUT_SESSION_NOT_FOUND
+         );
       }
    } catch (err) {
       throw err;
@@ -138,7 +149,9 @@ const retrieveWorkoutSessions = async (req: Request, res: Response) => {
       const workoutSessions: PrismaWorkoutSession[] =
          await WorkoutSessionRepository.findAll();
       if (!workoutSessions || workoutSessions.length === 0) {
-         throw notFoundError(CUSTOM_ERROR_MESSAGES.WORKOUT_SESSIONS_NOT_FOUND);
+         throw notFoundError(
+            CUSTMO_WORKOUT_SESSION_ERROR_MESSAGES.WORKOUT_SESSIONS_NOT_FOUND
+         );
       }
       return workoutSessions;
    } catch (err) {

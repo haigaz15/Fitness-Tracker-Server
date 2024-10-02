@@ -27,3 +27,12 @@ export const badRequestError = (
       HTTP_ERROR_STATUS.BAD_REQUEST
    );
 };
+
+export const unauthorizedError = (
+   customMessage: string = 'request could not be completed'
+) => {
+   return new APIError(
+      `${HTTP_ERROR_MESSAGES.UNAUTHORIZED} ${customMessage}`,
+      HTTP_ERROR_STATUS.UNAUTHORIZED
+   );
+};

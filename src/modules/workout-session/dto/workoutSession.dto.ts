@@ -31,10 +31,18 @@ export class WorkoutSessionExerciseDTO {
    }
 }
 
-// export class StartWorkoutSessionDTO {
-//    constructor(data) {
-//       this.id = data.id;
-//       this.startTime = data.startTime;
-//       this.endTime = data.endTime;
-//    }
-// };
+interface StartWorkoutSessionInput {
+   id: string;
+   startTime: string;
+   endTime: string;
+}
+export class StartWorkoutSessionDTO {
+   id: string;
+   startTime: string;
+   endTime: string;
+   constructor(data: StartWorkoutSessionInput) {
+      this.id = data.id;
+      this.startTime = data.startTime;
+      this.endTime = data.endTime;
+   }
+}

@@ -1,14 +1,18 @@
 import express from 'express';
 import ExerciseLibraryController from '../../modules/exercise-library/exerciseLibrary.controller';
+import authMiddleWare from '../../middlewares/authMiddleware';
+import { authRoleMiddleWare } from '../../middlewares/authRoleMiddleware';
 const router = express.Router();
 
 router.get(
    '/exercise-library/:type',
    ExerciseLibraryController.getExercisesByType
 );
-// Purely for testing purposes should be deleted eventually and replaced with seeding db
+
 router.post(
    '/internal/exercise-library/',
+   authMiddleWare,
+   authRoleMiddleWare,
    ExerciseLibraryController.createExercise
 );
 

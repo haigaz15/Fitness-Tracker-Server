@@ -3,6 +3,7 @@ import {
    PrismaCreateWorkoutSession,
    PrismaUpdateWorkoutSession,
    PrismaWorkoutSession,
+   PrismaWorkoutSessionUpdateInput,
    PrismaWorkoutSessionWhereInput,
    PrismaWorkoutSessionWhereUniqueInput,
 } from '../modules/workout-session/workout-session.prisma.type';
@@ -33,4 +34,14 @@ const findOne = async (
 ): Promise<PrismaWorkoutSession | null> => {
    return await prisma.workoutSession.findUnique({ where: query });
 };
-export default { createOne, findAll, findByIdAndUpdate, findOne };
+
+const updateOne = async (
+   query: PrismaWorkoutSessionWhereUniqueInput,
+   data: PrismaWorkoutSessionUpdateInput
+) => {
+   return await prisma.workoutSession.update({
+      where: query,
+      data,
+   });
+};
+export default { createOne, findAll, findByIdAndUpdate, findOne, updateOne };

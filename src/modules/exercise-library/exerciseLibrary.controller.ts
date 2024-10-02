@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import ExerciseLibraryService from './exerciseLibrary.service';
+import { HTTP_SUCCESS_MESSAGES } from '../../core/success-enums';
 
 const getExercisesByType = async (
    req: Request,
@@ -24,7 +25,7 @@ const createExercise = async (
 ) => {
    try {
       await ExerciseLibraryService.createExercise(req, res);
-      res.status(201).json({ message: 'Exercise sucessfully created' });
+      res.status(201).json({ message: HTTP_SUCCESS_MESSAGES.CREATED });
    } catch (err) {
       next(err);
    }

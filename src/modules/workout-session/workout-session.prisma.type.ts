@@ -10,3 +10,4 @@ export type PrismaWorkoutSessionWhereInput = Prisma.WorkoutSessionWhereInput;
 
 export type PrismaWorkoutSessionWhereUniqueInput =
    Prisma.WorkoutSessionWhereUniqueInput;
+export type PrismaWorkoutSessionUpdateInput = Prisma.WorkoutSessionUpdateInput;

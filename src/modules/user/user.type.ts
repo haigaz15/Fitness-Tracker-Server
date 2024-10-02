@@ -7,3 +7,8 @@ export interface UserEntity {
    weight: number | null;
    height: number | null;
 }
+
+export enum Role {
+   ADMIN = 'admin',
+   MEMBER = 'member',
+}

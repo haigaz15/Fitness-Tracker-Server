@@ -45,6 +45,7 @@ model User {
   username         String           @unique
   email            String
   password         String
+  role             String           @default("member")
   weight           Float?
   height           Float?
   workoutSessions  WorkoutSession[]

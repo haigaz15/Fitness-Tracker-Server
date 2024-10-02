@@ -1,5 +1,6 @@
 import { NextFunction, Response, Request } from 'express';
 import WorkoutSessionService from './workoutSession.service';
+import { HTTP_SUCCESS_MESSAGES } from '../../core/success-enums';
 
 const createWorkoutSession = async (
    req: Request,
@@ -8,7 +9,7 @@ const createWorkoutSession = async (
 ) => {
    try {
       await WorkoutSessionService.createWorkoutSession(req, res);
-      res.status(201).send({ message: 'sucessfully created' });
+      res.status(201).send({ message: HTTP_SUCCESS_MESSAGES.CREATED });
    } catch (err) {
       next(err);
    }

@@ -16,4 +16,11 @@ router.post(
    ExerciseLibraryController.createExercise
 );
 
+router.post(
+   '/internal/exercise-library/many',
+   authMiddleWare,
+   authRoleMiddleWare,
+   ExerciseLibraryController.createExercises
+);
+
 export default router;

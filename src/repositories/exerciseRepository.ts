@@ -28,10 +28,10 @@ const createOne = async (
    return prisma.exercise.create({ data });
 };
 
-const insertMany = async (
+const createMany = async (
    data: PrismaExercise[]
 ): Promise<{ count: number }> => {
    return await prisma.exercise.createMany({ data });
 };
 
-export default { findOne, createOne, insertMany, findAll };
+export default { findOne, createOne, createMany, findAll };

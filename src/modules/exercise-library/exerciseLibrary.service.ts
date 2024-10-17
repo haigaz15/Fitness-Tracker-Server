@@ -1,7 +1,7 @@
 import ExerciseRepository from '../../repositories/exerciseRepository';
 import { PrismaExercise } from './exercise.prisma.type';
 import APIError from '../../core/api-errors';
-import { ExerciseDTO } from './dto/exerciseLibraryDTO';
+import { ExerciseDTO, ExerciseInput } from './dto/exerciseLibraryDTO';
 import { Request, Response } from 'express';
 import {
    badRequestError,
@@ -59,4 +59,34 @@ const createExercise = async (req: Request, res: Response) => {
    }
 };
 
-export default { getExercisesByType, createExercise };
+const createExercises = async (req: Request, res: Response) => {
+   try {
+      const exercisesData = req.body;
+      const exercises: ExerciseDTO[] = exercisesData.map(
+         (exerciseData: ExerciseInput) => {
+            return new ExerciseDTO(exerciseData);
+         }
+      );
+      const unkonwntypes = exercises.filter(
+         (exercise) => !exerciseTypes[exercise.type as EquipmentType]
+      );
+      console.log(unkonwntypes);
+      if (unkonwntypes.length !== 0) {
+         throw badRequestError(
+            CUSTOM_EXERCISE_ERROR_MESSAGES.INCORRECT_EXCERCISE_TYPES
+         );
+      }
+      const exerciseNames = exercises.map((exercise) => exercise.name);
+      const existingExercises = await ExerciseRepository.findAll({
+         name: { in: exerciseNames },
+      });
+      if (existingExercises && existingExercises.length !== 0) {
+         throw conflictError(CUSTOM_EXERCISE_ERROR_MESSAGES.EXERCISE_EXIST);
+      }
+      await ExerciseRepository.createMany(exercises);
+   } catch (err) {
+      throw err;
+   }
+};
+
+export default { getExercisesByType, createExercise, createExercises };

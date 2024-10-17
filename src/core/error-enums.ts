@@ -10,6 +10,7 @@ export enum CUSTOM_AUTH_ERROR_MESSAGES {
 }
 export enum CUSTOM_EXERCISE_ERROR_MESSAGES {
    INCORRECT_EXCERCISE_TYPE = 'Incorrect exercise type!',
+   INCORRECT_EXCERCISE_TYPES = 'Incorrect exercise types, some exercises have wrong exercise types!',
    EXERCISE_NOT_FOUND = 'Exercise could not be found! Please re-check your data',
    EXERCISE_EXIST = 'Exercise already already exist! Please try with different values',
    MISSING_EXERCISE = 'Some exercises are missing please check again',

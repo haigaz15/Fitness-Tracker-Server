@@ -30,5 +30,16 @@ const createExercise = async (
       next(err);
    }
 };
-
-export default { getExercisesByType, createExercise };
+const createExercises = async (
+   req: Request,
+   res: Response,
+   next: NextFunction
+) => {
+   try {
+      await ExerciseLibraryService.createExercises(req, res);
+      res.status(201).json({ message: HTTP_SUCCESS_MESSAGES.CREATED });
+   } catch (err) {
+      next(err);
+   }
+};
+export default { getExercisesByType, createExercise, createExercises };

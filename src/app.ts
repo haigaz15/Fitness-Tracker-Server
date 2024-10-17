@@ -3,11 +3,13 @@ import exerciseLibraryRouter from './routes/exercise-library/exerciseLibraryRout
 import workoutSessionRouter from './routes/workout-session/workoutSessionRoute';
 import authRourter from './routes/auth/authRoute';
 import dotenv from 'dotenv';
+import cors from 'cors';
 dotenv.config();
 
 import errorMiddleWare from './middlewares/errorMiddleware';
 import logger from './util/logger';
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(exerciseLibraryRouter);
 app.use(workoutSessionRouter);

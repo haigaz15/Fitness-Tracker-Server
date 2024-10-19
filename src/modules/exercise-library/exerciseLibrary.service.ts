@@ -3,11 +3,7 @@ import { PrismaExercise } from './exercise.prisma.type';
 import APIError from '../../core/api-errors';
 import { ExerciseDTO, ExerciseInput } from './dto/exerciseLibraryDTO';
 import { Request, Response } from 'express';
-import {
-   badRequestError,
-   conflictError,
-   notFoundError,
-} from '../../core/error-list';
+import { badRequestError, conflictError } from '../../core/error-list';
 import { CUSTOM_EXERCISE_ERROR_MESSAGES } from '../../core/error-enums';
 import { EquipmentType, ExerciseEntity, exerciseTypes } from './exercise.type';
 const getExercisesByType = async (req: Request, res: Response) => {
@@ -22,10 +18,8 @@ const getExercisesByType = async (req: Request, res: Response) => {
          type === exerciseTypes.all
             ? await ExerciseRepository.findAll({})
             : await ExerciseRepository.findAll({ type: type });
-      if (exercises?.length === 0 || !exercises) {
-         throw notFoundError(CUSTOM_EXERCISE_ERROR_MESSAGES.EXERCISE_NOT_FOUND);
-      }
-      return exercises.map((exercise: ExerciseEntity) => {
+
+      return exercises?.map((exercise: ExerciseEntity) => {
          return {
             name: exercise.name,
             type: exercise.type,

@@ -22,6 +22,18 @@ const findAll = async (
    });
 };
 
+const findAllWithPagination = async (
+   skip: number = 0,
+   take: number = 10,
+   query: PrismaExerciseWhereInput
+): Promise<PrismaExercise[] | null> => {
+   return await prisma.exercise.findMany({
+      skip,
+      take,
+      where: query,
+   });
+};
+
 const createOne = async (
    data: PrismaCreateExercise
 ): Promise<PrismaExercise> => {
@@ -34,4 +46,10 @@ const createMany = async (
    return await prisma.exercise.createMany({ data });
 };
 
-export default { findOne, createOne, createMany, findAll };
+export default {
+   findOne,
+   createOne,
+   createMany,
+   findAll,
+   findAllWithPagination,
+};

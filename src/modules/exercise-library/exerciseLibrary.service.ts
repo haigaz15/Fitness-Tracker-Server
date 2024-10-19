@@ -1,6 +1,4 @@
 import ExerciseRepository from '../../repositories/exerciseRepository';
-import { PrismaExercise } from './exercise.prisma.type';
-import APIError from '../../core/api-errors';
 import { ExerciseDTO, ExerciseInput } from './dto/exerciseLibraryDTO';
 import { Request, Response } from 'express';
 import { badRequestError, conflictError } from '../../core/error-list';
@@ -9,6 +7,7 @@ import { EquipmentType, ExerciseEntity, exerciseTypes } from './exercise.type';
 const getExercisesByType = async (req: Request, res: Response) => {
    try {
       const { type } = req.params;
+      const { skip, take } = req.query;
       if (!exerciseTypes[type as EquipmentType]) {
          throw badRequestError(
             CUSTOM_EXERCISE_ERROR_MESSAGES.INCORRECT_EXCERCISE_TYPE
@@ -16,8 +15,18 @@ const getExercisesByType = async (req: Request, res: Response) => {
       }
       const exercises =
          type === exerciseTypes.all
-            ? await ExerciseRepository.findAll({})
-            : await ExerciseRepository.findAll({ type: type });
+            ? await ExerciseRepository.findAllWithPagination(
+                 Number(skip),
+                 Number(take),
+                 {}
+              )
+            : await ExerciseRepository.findAllWithPagination(
+                 Number(skip),
+                 Number(take),
+                 {
+                    type: type,
+                 }
+              );
 
       return exercises?.map((exercise: ExerciseEntity) => {
          return {
@@ -27,7 +36,6 @@ const getExercisesByType = async (req: Request, res: Response) => {
          };
       });
    } catch (err) {
-      console.log(err);
       throw err;
    }
 };

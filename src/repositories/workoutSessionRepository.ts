@@ -29,6 +29,28 @@ const findAll = async (
 ): Promise<PrismaWorkoutSession[]> => {
    return await prisma.workoutSession.findMany({ where: query });
 };
+const findAllWorkoutsWithExercises = async (
+   query?: PrismaWorkoutSessionWhereInput
+) => {
+   return await prisma.workoutSession.findMany({
+      where: query,
+      select: {
+         name: true,
+         workoutDate: true,
+         startTime: true,
+         endTime: true,
+         notes: true,
+         exercises: {
+            select: {
+               set: true,
+               reps: true,
+               rest: true,
+               weight: true,
+            },
+         },
+      },
+   });
+};
 const findOne = async (
    query: PrismaWorkoutSessionWhereUniqueInput
 ): Promise<PrismaWorkoutSession | null> => {
@@ -44,4 +66,11 @@ const updateOne = async (
       data,
    });
 };
-export default { createOne, findAll, findByIdAndUpdate, findOne, updateOne };
+export default {
+   createOne,
+   findAll,
+   findByIdAndUpdate,
+   findOne,
+   updateOne,
+   findAllWorkoutsWithExercises,
+};

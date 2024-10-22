@@ -22,4 +22,10 @@ const createMany = async (
    await prisma.exerciseOnWorkoutSession.createMany({ data });
 };
 
-export default { createOne, findOne, createMany };
+const findAll = async (query: PrismaExerciseOnWorkoutSessionWhereInput) => {
+   return await prisma.exerciseOnWorkoutSession.findMany({
+      where: query,
+   });
+};
+
+export default { createOne, findOne, createMany, findAll };

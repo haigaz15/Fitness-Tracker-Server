@@ -1,6 +1,6 @@
 import WorkoutSessionRepository from '../../repositories/workoutSessionRepository';
 import UserRepository from '../../repositories/userRepository';
-import ExerciseOnWorkoutSession from '../../repositories/exerciseOnWorkoutRepository';
+import ExerciseOnWorkoutSessionRepository from '../../repositories/exerciseOnWorkoutRepository';
 import ExerciseRepository from '../../repositories/exerciseRepository';
 import { Request, Response } from 'express';
 import { PrismaWorkoutSession } from './workout-session.prisma.type';
@@ -16,6 +16,7 @@ import {
    WorkoutSessionExerciseDTO,
    WorkoutSessionExerciseInput,
 } from './dto/workoutSession.dto';
+import { WorkoutSessionWithExercises } from './workout-session.type';
 const createWorkoutSession = async (
    req: GetUserAuthInfoRequest,
    res: Response
@@ -32,12 +33,14 @@ const createWorkoutSession = async (
       });
 
       const w = new CreateWorkoutSessionDTO({
+         name: workoutSessionData.name,
          workoutDate: workoutSessionData.workoutDate,
          exercises: exercises,
          userId: user?.id,
       });
       const workoutSession = await WorkoutSessionRepository.createOne({
          workoutDate: w.workoutDate,
+         name: w.name,
          user: {
             connect: { id: w.userId as string },
          },
@@ -54,9 +57,11 @@ const createWorkoutSession = async (
       if (dbExercises.length !== exercises.length) {
          throw badRequestError(CUSTOM_EXERCISE_ERROR_MESSAGES.MISSING_EXERCISE);
       }
-      await ExerciseOnWorkoutSession.createMany(
+      await ExerciseOnWorkoutSessionRepository.createMany(
          dbExercises?.map((e: any, index: number) => {
             return {
+               rest: exercises[index].rest,
+               weight: exercises[index].weight,
                set: exercises[index].set,
                reps: exercises[index].reps,
                workoutSessionId: workoutSession.id,
@@ -146,8 +151,8 @@ const retrieveWorkoutSession = async (req: Request, res: Response) => {
 
 const retrieveWorkoutSessions = async (req: Request, res: Response) => {
    try {
-      const workoutSessions: PrismaWorkoutSession[] =
-         await WorkoutSessionRepository.findAll();
+      const workoutSessions: WorkoutSessionWithExercises[] =
+         await WorkoutSessionRepository.findAllWorkoutsWithExercises();
       if (!workoutSessions || workoutSessions.length === 0) {
          throw notFoundError(
             CUSTMO_WORKOUT_SESSION_ERROR_MESSAGES.WORKOUT_SESSIONS_NOT_FOUND

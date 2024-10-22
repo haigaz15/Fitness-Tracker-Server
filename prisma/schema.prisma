@@ -15,8 +15,8 @@ model ExerciseOnWorkoutSession {
   workoutSessionId String         @db.ObjectId
   set              Int
   reps             String
-  rest             Int
-  weight           Int
+  rest             String?
+  weight           String?
 }
 
 model Exercise {

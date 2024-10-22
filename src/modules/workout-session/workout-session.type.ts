@@ -5,3 +5,17 @@ export interface WorkoutSessionExercise {
    set: string;
    reps: string;
 }
+
+export interface WorkoutSessionWithExercises {
+   name: string;
+   startTime: Date | null;
+   endTime: Date | null;
+   workoutDate: Date | null;
+   notes: string | null;
+   exercises: {
+      set: number;
+      reps: string;
+      rest: string | null;
+      weight: string | null;
+   }[];
+}

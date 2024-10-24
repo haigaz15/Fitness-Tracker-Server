@@ -8,10 +8,9 @@ router.post(
    authMiddleWare,
    WorkoutSessionController.createWorkoutSession
 );
-
+//just for testing and development purposes I removed the authMiddleWare of this route
 router.get(
    '/workout-sessions',
-   authMiddleWare,
    WorkoutSessionController.retrieveWorkoutSessions
 );
 

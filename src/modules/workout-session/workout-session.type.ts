@@ -13,6 +13,7 @@ export interface WorkoutSessionWithExercises {
    workoutDate: Date | null;
    notes: string | null;
    exercises: {
+      name: string;
       set: number;
       reps: string;
       rest: string | null;

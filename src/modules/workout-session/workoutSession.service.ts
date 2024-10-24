@@ -151,14 +151,27 @@ const retrieveWorkoutSession = async (req: Request, res: Response) => {
 
 const retrieveWorkoutSessions = async (req: Request, res: Response) => {
    try {
-      const workoutSessions: WorkoutSessionWithExercises[] =
+      const workoutSessions =
          await WorkoutSessionRepository.findAllWorkoutsWithExercises();
       if (!workoutSessions || workoutSessions.length === 0) {
          throw notFoundError(
             CUSTMO_WORKOUT_SESSION_ERROR_MESSAGES.WORKOUT_SESSIONS_NOT_FOUND
          );
       }
-      return workoutSessions;
+      return workoutSessions.map((workoutSession) => {
+         return {
+            ...workoutSession,
+            exercises: workoutSession.exercises.map((exercise) => {
+               return {
+                  name: exercise.exercise.name,
+                  set: exercise.set,
+                  reps: exercise.reps,
+                  rest: exercise.rest,
+                  weight: exercise.weight,
+               };
+            }),
+         };
+      }) as WorkoutSessionWithExercises[];
    } catch (err) {
       throw err;
    }

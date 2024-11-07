@@ -20,11 +20,15 @@ model ExerciseOnWorkoutSession {
 }
 
 model Exercise {
-  id              String                     @id @default(auto()) @map("_id") @db.ObjectId
-  name            String
-  type            String
-  description     String
-  workoutSessions ExerciseOnWorkoutSession[]
+  id               String                     @id @default(auto()) @map("_id") @db.ObjectId
+  name             String
+  type             String
+  description      String
+  primaryMuscle    MuscleGroup
+  secondaryMuscles String
+  category         ExerciseCategory
+  difficulty       ExerciseDifficulty
+  workoutSessions  ExerciseOnWorkoutSession[]
 
   @@unique([name])
 }
@@ -80,4 +84,45 @@ model BodyMuscleSize {
   adductorsSize  Float?
   calvesSize     Float?
   user           User[]
+}
+
+enum MuscleGroup {
+  ABDUCTORS
+  ADDUCTORS
+  BICEPS
+  CALVES
+  DELTOIDS
+  ERECTOR_SPINAE
+  FOREARMS
+  GLUTES
+  HAMSTRINGS
+  LATS
+  OBLIQUES
+  PECTORALS
+  QUADRICEPS
+  SERRATUS
+  TRAPEZIUS
+  TRICEPS
+  UPPER_ABS
+  LOWER_ABS
+  SOLEUS
+  WRIST_FLEXORS
+  BRACHIORADIALIS
+  LOWER_BACK
+}
+
+enum ExerciseCategory {
+  CHEST
+  SHOULDERS
+  LEGS
+  ARMS
+  BACK
+  CARDIO
+  STRETCH
+}
+
+enum ExerciseDifficulty {
+  EASY
+  MEDIUM
+  HARD
 }

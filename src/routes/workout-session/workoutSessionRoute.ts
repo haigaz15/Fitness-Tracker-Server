@@ -1,4 +1,4 @@
-import express, { RequestHandler } from 'express';
+import express from 'express';
 import WorkoutSessionController from '../../modules/workout-session/workoutSession.controller';
 import authMiddleWare from '../../middlewares/authMiddleware';
 const router = express.Router();

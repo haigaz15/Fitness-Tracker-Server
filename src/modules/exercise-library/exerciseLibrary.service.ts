@@ -1,9 +1,21 @@
 import ExerciseRepository from '../../repositories/exerciseRepository';
-import { ExerciseDTO, ExerciseInput } from './dto/exerciseLibraryDTO';
+import {
+   ExerciseRequestDTO,
+   ExerciseRequestInput,
+   ExerciseResponseDTO,
+   ExerciseResponseInput,
+} from './dto/exerciseLibraryDTO';
 import { Request, Response } from 'express';
 import { badRequestError, conflictError } from '../../core/error-list';
 import { CUSTOM_EXERCISE_ERROR_MESSAGES } from '../../core/error-enums';
-import { EquipmentType, ExerciseEntity, exerciseTypes } from './exercise.type';
+import {
+   EquipmentType,
+   ExerciseCategory,
+   ExerciseDifficulty,
+   ExerciseEntity,
+   exerciseTypes,
+} from './exercise.type';
+import { MuscleGroup } from '@prisma/client';
 const getExercisesByType = async (req: Request, res: Response) => {
    try {
       const { type } = req.params;
@@ -27,13 +39,16 @@ const getExercisesByType = async (req: Request, res: Response) => {
                     type: type,
                  }
               );
-
-      return exercises?.map((exercise: ExerciseEntity) => {
-         return {
+      return exercises?.map((exercise: ExerciseResponseInput) => {
+         return new ExerciseResponseDTO({
             name: exercise.name,
             type: exercise.type,
             description: exercise.description,
-         };
+            primaryMuscle: exercise.primaryMuscle,
+            secondaryMuscles: exercise.secondaryMuscles,
+            category: exercise.category,
+            difficulty: exercise.difficulty,
+         });
       });
    } catch (err) {
       throw err;
@@ -43,7 +58,7 @@ const getExercisesByType = async (req: Request, res: Response) => {
 const createExercise = async (req: Request, res: Response) => {
    try {
       const exercisedata = req.body;
-      const exercise = new ExerciseDTO(exercisedata);
+      const exercise = new ExerciseRequestDTO(exercisedata);
       if (!exerciseTypes[exercise.type as EquipmentType]) {
          throw badRequestError(
             CUSTOM_EXERCISE_ERROR_MESSAGES.INCORRECT_EXCERCISE_TYPE
@@ -64,15 +79,14 @@ const createExercise = async (req: Request, res: Response) => {
 const createExercises = async (req: Request, res: Response) => {
    try {
       const exercisesData = req.body;
-      const exercises: ExerciseDTO[] = exercisesData.map(
-         (exerciseData: ExerciseInput) => {
-            return new ExerciseDTO(exerciseData);
+      const exercises: ExerciseRequestDTO[] = exercisesData.map(
+         (exerciseData: ExerciseRequestInput) => {
+            return new ExerciseRequestDTO(exerciseData);
          }
       );
       const unkonwntypes = exercises.filter(
          (exercise) => !exerciseTypes[exercise.type as EquipmentType]
       );
-      console.log(unkonwntypes);
       if (unkonwntypes.length !== 0) {
          throw badRequestError(
             CUSTOM_EXERCISE_ERROR_MESSAGES.INCORRECT_EXCERCISE_TYPES

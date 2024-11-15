@@ -7,20 +7,20 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model ExerciseOnWorkoutSession {
-  id               String         @id @default(auto()) @map("_id") @db.ObjectId
-  exercise         Exercise       @relation(fields: [exerciseId], references: [id])
-  exerciseId       String         @db.ObjectId
-  workoutSession   WorkoutSession @relation(fields: [workoutSessionId], references: [id])
-  workoutSessionId String         @db.ObjectId
-  set              Int
-  reps             String
-  rest             String?
-  weight           String?
+model ExerciseOnWorkout {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId String   @db.ObjectId
+  workout    Workout  @relation(fields: [workoutId], references: [id], onDelete: Cascade)
+  workoutId  String   @db.ObjectId
+  set        Int
+  reps       String
+  rest       String?
+  weight     String?
 }
 
 model Exercise {
-  id               String                     @id @default(auto()) @map("_id") @db.ObjectId
+  id               String              @id @default(auto()) @map("_id") @db.ObjectId
   name             String
   type             String
   description      String
@@ -28,36 +28,50 @@ model Exercise {
   secondaryMuscles String
   category         ExerciseCategory
   difficulty       ExerciseDifficulty
-  workoutSessions  ExerciseOnWorkoutSession[]
+  workouts         ExerciseOnWorkout[]
 
   @@unique([name])
 }
 
+model Workout {
+  id              String              @id @default(auto()) @map("_id") @db.ObjectId
+  externalId      String              @unique @default(uuid())
+  name            String
+  startTime       DateTime?
+  endTime         DateTime?
+  workoutDate     DateTime?
+  exercises       ExerciseOnWorkout[]
+  notes           String?
+  userId          String              @db.ObjectId
+  user            User                @relation(fields: [userId], references: [id])
+  workoutSessions WorkoutSession[]
+}
+
 model WorkoutSession {
-  id          String                     @id @default(auto()) @map("_id") @db.ObjectId
-  name        String
-  startTime   DateTime?
-  endTime     DateTime?
-  workoutDate DateTime?
-  exercises   ExerciseOnWorkoutSession[]
-  notes       String?
-  userId      String                     @db.ObjectId
-  user        User                       @relation(fields: [userId], references: [id])
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  externalId  String   @unique @default(uuid())
+  sessionTime DateTime
+  totalReps   Int
+  totalSets   Int
+  totalWeight Int
+  totalRest   Int
+  workoutId   String?  @db.ObjectId
+  workout     Workout? @relation(fields: [workoutId], references: [id], onDelete: SetNull)
 }
 
 model User {
-  id               String           @id @default(auto()) @map("_id") @db.ObjectId
+  id               String          @id @default(auto()) @map("_id") @db.ObjectId
   firstName        String
   lastName         String
-  username         String           @unique
+  username         String          @unique
   email            String
   password         String
-  role             String           @default("member")
+  role             String          @default("member")
   weight           Float?
   height           Float?
-  workoutSessions  WorkoutSession[]
-  bodyMuscleSizeId String?          @db.ObjectId
-  bodyMuscleSize   BodyMuscleSize?  @relation(fields: [bodyMuscleSizeId], references: [id])
+  workouts         Workout[]
+  bodyMuscleSizeId String?         @db.ObjectId
+  bodyMuscleSize   BodyMuscleSize? @relation(fields: [bodyMuscleSizeId], references: [id])
 }
 
 model BodyMuscleSize {

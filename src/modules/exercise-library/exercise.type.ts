@@ -22,6 +22,18 @@ export type EquipmentType =
    | 'kettle'
    | 'all';
 
+export interface ExerciseVolume {
+   set: number;
+   reps: string;
+   rest: string;
+   weight: string;
+}
+
+export type ExerciseVoulmeItem =
+   | ExerciseVolume['reps']
+   | ExerciseVolume['rest']
+   | ExerciseVolume['weight'];
+
 export const exerciseTypes: Record<EquipmentType, string> = {
    barbell: 'barbell',
    dumbbell: 'dumbbell',

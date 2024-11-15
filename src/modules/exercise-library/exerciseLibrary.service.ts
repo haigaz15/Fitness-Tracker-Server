@@ -8,37 +8,35 @@ import {
 import { Request, Response } from 'express';
 import { badRequestError, conflictError } from '../../core/error-list';
 import { CUSTOM_EXERCISE_ERROR_MESSAGES } from '../../core/error-enums';
-import {
-   EquipmentType,
-   ExerciseCategory,
-   ExerciseDifficulty,
-   ExerciseEntity,
-   exerciseTypes,
-} from './exercise.type';
-import { MuscleGroup } from '@prisma/client';
+import { EquipmentType, exerciseTypes } from './exercise.type';
 const getExercisesByType = async (req: Request, res: Response) => {
    try {
       const { type } = req.params;
       const { skip, take } = req.query;
+      const searchQuery = req.query.searchQuery?.toString();
       if (!exerciseTypes[type as EquipmentType]) {
          throw badRequestError(
             CUSTOM_EXERCISE_ERROR_MESSAGES.INCORRECT_EXCERCISE_TYPE
          );
       }
-      const exercises =
-         type === exerciseTypes.all
-            ? await ExerciseRepository.findAllWithPagination(
-                 Number(skip),
-                 Number(take),
-                 {}
-              )
-            : await ExerciseRepository.findAllWithPagination(
-                 Number(skip),
-                 Number(take),
-                 {
-                    type: type,
-                 }
-              );
+      const exercises = searchQuery
+         ? await ExerciseRepository.findAll({
+              name: { contains: searchQuery, mode: 'insensitive' },
+              type: type !== exerciseTypes.all ? type : undefined,
+           })
+         : type === exerciseTypes.all
+           ? await ExerciseRepository.findAllWithPagination(
+                Number(skip),
+                Number(take),
+                {}
+             )
+           : await ExerciseRepository.findAllWithPagination(
+                Number(skip),
+                Number(take),
+                {
+                   type: type,
+                }
+             );
       return exercises?.map((exercise: ExerciseResponseInput) => {
          return new ExerciseResponseDTO({
             name: exercise.name,

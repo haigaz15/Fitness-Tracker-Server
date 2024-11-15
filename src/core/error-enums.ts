@@ -19,7 +19,11 @@ export enum CUSTOM_USER_ERROR_MESSAGES {
    USER_ALREADY_EXIST = 'User with sent username already exist',
    USER_DATA_MISSING_OR_WORNG = 'Either firstName, lastName, username, email, password or all are missing please fill before proceeding',
 }
-
+export enum CUSTOM_WORKOUT_MESSAGES {
+   WORKOUT_EXIST = 'Workout already exist! Please try with different values',
+   WORKOUT__NOT_FOUND = 'Workout could not be found! Please re-check your data',
+   WORKOUTS_NOT_FOUND = 'Workouot could not be found! Please re-check your data',
+}
 export enum CUSTMO_WORKOUT_SESSION_ERROR_MESSAGES {
    WORKOUT_SESSION_EXIST = 'Workout session already exist! Please try with different values',
    WORKOUT_SESSION_NOT_FOUND = 'Workout Session could not be found! Please re-check your data',

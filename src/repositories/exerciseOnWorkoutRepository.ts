@@ -1,29 +1,27 @@
 import prisma from '../core/prisma-client';
 import {
-   PrismaExerciseOnWorkoutSessionCreateInput,
-   PrismaExerciseOnWorkoutSession,
-   PrismaExerciseOnWorkoutSessionWhereInput,
-   PrismaExerciseOnWorkoutSessionCreateManyInput,
-} from '../modules/workout-session/exercise-on-workout.prisma.type';
+   PrismaExerciseOnWorkoutCreateInput,
+   PrismaExerciseOnWorkout,
+   PrismaExerciseOnWorkoutWhereInput,
+   PrismaExerciseOnWorkoutCreateManyInput,
+} from '../modules/workout/exercise-on-workout.prisma.type';
 
 const createOne = async (
-   data: PrismaExerciseOnWorkoutSessionCreateInput
-): Promise<PrismaExerciseOnWorkoutSession> => {
-   return await prisma.exerciseOnWorkoutSession.create({ data });
+   data: PrismaExerciseOnWorkoutCreateInput
+): Promise<PrismaExerciseOnWorkout> => {
+   return await prisma.exerciseOnWorkout.create({ data });
 };
 
-const findOne = async (query: PrismaExerciseOnWorkoutSessionWhereInput) => {
-   return await prisma.exerciseOnWorkoutSession.findFirst({ where: query });
+const findOne = async (query: PrismaExerciseOnWorkoutWhereInput) => {
+   return await prisma.exerciseOnWorkout.findFirst({ where: query });
 };
 
-const createMany = async (
-   data: PrismaExerciseOnWorkoutSessionCreateManyInput[]
-) => {
-   await prisma.exerciseOnWorkoutSession.createMany({ data });
+const createMany = async (data: PrismaExerciseOnWorkoutCreateManyInput[]) => {
+   await prisma.exerciseOnWorkout.createMany({ data });
 };
 
-const findAll = async (query: PrismaExerciseOnWorkoutSessionWhereInput) => {
-   return await prisma.exerciseOnWorkoutSession.findMany({
+const findAll = async (query: PrismaExerciseOnWorkoutWhereInput) => {
+   return await prisma.exerciseOnWorkout.findMany({
       where: query,
    });
 };

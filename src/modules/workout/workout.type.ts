@@ -1,12 +1,13 @@
 import { ExerciseEntity } from '../exercise-library/exercise.type';
 
-export interface WorkoutSessionExercise {
+export interface WorkoutExercise {
    exercise: ExerciseEntity;
    set: string;
    reps: string;
 }
 
-export interface WorkoutSessionWithExercises {
+export interface WorkoutWithExercises {
+   id: string;
    name: string;
    startTime: Date | null;
    endTime: Date | null;

@@ -1,4 +1,4 @@
-import { Exercise, ExerciseOnWorkoutSession, Prisma } from '@prisma/client';
+import { Exercise, ExerciseOnWorkout, Prisma } from '@prisma/client';
 
 export type PrismaExerciseWhereInput = Prisma.ExerciseWhereInput;
 
@@ -8,4 +8,4 @@ export type PrismaExercise = Omit<Exercise, 'id'>;
 
 export type PrismaCreateExercise = Prisma.ExerciseCreateInput;
 
-export type PrismaExerciseOnWorkout = ExerciseOnWorkoutSession;
+export type PrismaExerciseOnWorkout = ExerciseOnWorkout;

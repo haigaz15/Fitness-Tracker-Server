@@ -20,6 +20,7 @@ import {
    UpdateWorkoutSessionVolumeResponseDTO,
    WorkoutExerciseDTO,
    WorkoutExerciseInput,
+   WorkoutResponseDTO,
    WorkoutWithWorkoutSessionsReponseDTO,
 } from './dto/workout.dto';
 import WorkoutSessionRepository from '../../repositories/workoutSessionRepository';
@@ -198,14 +199,17 @@ const retrieveWorkout = async (req: Request, res: Response) => {
    }
 };
 
-const retrieveWorkouts = async (req: Request, res: Response) => {
+const retrieveWorkouts = async (
+   req: Request,
+   res: Response
+): Promise<WorkoutResponseDTO[]> => {
    try {
       const workouts = await WorkoutRepository.findAllWorkoutsWithExercises();
       if (!workouts || workouts.length === 0) {
          throw notFoundError(CUSTOM_WORKOUT_MESSAGES.WORKOUTS_NOT_FOUND);
       }
       return workouts.map((workout) => {
-         return {
+         return new WorkoutResponseDTO({
             id: workout.externalId,
             name: workout.name,
             startTime: workout.startTime,
@@ -219,9 +223,13 @@ const retrieveWorkouts = async (req: Request, res: Response) => {
                   reps: exercise.reps,
                   rest: exercise.rest,
                   weight: exercise.weight,
+                  description: exercise.exercise.description,
+                  primaryMuscle: exercise.exercise.primaryMuscle,
+                  secondaryMuscles: exercise.exercise.secondaryMuscles,
+                  difficulty: exercise.exercise.difficulty,
                };
             }),
-         };
+         });
       }) as WorkoutWithExercises[];
    } catch (err) {
       throw err;

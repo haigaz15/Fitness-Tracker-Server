@@ -1,3 +1,9 @@
+import { Exercise, ExerciseDifficulty, MuscleGroup } from '@prisma/client';
+import {
+   exerciseDifficultyRecordsInverse,
+   muscleGroupRecordsInverse,
+} from '../../exercise-library/exercise.type';
+
 interface CreateWorkoutInput {
    workoutDate: Date;
    name: string;
@@ -29,6 +35,10 @@ export interface WorkoutExerciseInput {
    reps: string;
    rest: string | null;
    weight: string | null;
+   description?: string | null;
+   primaryMuscle?: string;
+   secondaryMuscles?: string;
+   difficulty?: string;
 }
 
 export class WorkoutExerciseDTO {
@@ -37,15 +47,54 @@ export class WorkoutExerciseDTO {
    reps: string;
    rest: string | null;
    weight: string | null;
+   description?: string | null;
+   primaryMuscle?: string;
+   secondaryMuscles?: string;
+   difficulty?: string;
    constructor(data: WorkoutExerciseInput) {
       this.name = data.name;
       this.set = data.set;
       this.reps = data.reps;
       this.rest = data.rest;
       this.weight = data.weight;
+      this.description = data.description;
+      this.primaryMuscle =
+         muscleGroupRecordsInverse[data.primaryMuscle as MuscleGroup];
+      this.secondaryMuscles = data.secondaryMuscles;
+      this.difficulty =
+         exerciseDifficultyRecordsInverse[
+            data.difficulty as ExerciseDifficulty
+         ];
    }
 }
+interface WorkoutInput {
+   workoutDate: Date | null;
+   name: string;
+   id: string;
+   notes: string | null;
+   startTime: Date | null;
+   endTime: Date | null;
+   exercises: WorkoutExerciseInput[];
+}
+export class WorkoutResponseDTO {
+   workoutDate: Date | null;
+   name: string;
+   id: string;
+   notes: string | null;
+   startTime: Date | null;
+   endTime: Date | null;
+   exercises: WorkoutExerciseInput[];
 
+   constructor(data: WorkoutInput) {
+      this.workoutDate = data.workoutDate;
+      this.name = data.name;
+      this.id = data.id;
+      this.notes = data.notes;
+      this.exercises = data.exercises;
+      this.startTime = data.startTime;
+      this.endTime = data.endTime;
+   }
+}
 interface StartWorkoutSessionInput {
    id: string;
    startTime: string;

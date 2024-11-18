@@ -4,6 +4,7 @@ export enum ExerciseTypeEnum {
    cable = 'cable',
    bodyweight = 'bodyweight',
    kettle = 'kettle',
+   machine = 'machine',
    all = 'all',
 }
 export interface ExerciseType {

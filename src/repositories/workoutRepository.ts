@@ -42,7 +42,13 @@ const findAllWorkoutsWithExercises = async (
          exercises: {
             select: {
                exercise: {
-                  select: { name: true },
+                  select: {
+                     name: true,
+                     description: true,
+                     primaryMuscle: true,
+                     secondaryMuscles: true,
+                     difficulty: true,
+                  },
                },
                set: true,
                reps: true,

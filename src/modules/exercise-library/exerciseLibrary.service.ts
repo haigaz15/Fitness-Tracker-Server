@@ -8,12 +8,17 @@ import {
 import { Request, Response } from 'express';
 import { badRequestError, conflictError } from '../../core/error-list';
 import { CUSTOM_EXERCISE_ERROR_MESSAGES } from '../../core/error-enums';
-import { EquipmentType, exerciseTypes } from './exercise.type';
+import {
+   EquipmentType,
+   exerciseCategoryRecords,
+   exerciseTypes,
+} from './exercise.type';
 const getExercisesByType = async (req: Request, res: Response) => {
    try {
       const { type } = req.params;
       const { skip, take } = req.query;
       const searchQuery = req.query.searchQuery?.toString();
+      const category = req.query.category?.toString();
       if (!exerciseTypes[type as EquipmentType]) {
          throw badRequestError(
             CUSTOM_EXERCISE_ERROR_MESSAGES.INCORRECT_EXCERCISE_TYPE
@@ -23,18 +28,28 @@ const getExercisesByType = async (req: Request, res: Response) => {
          ? await ExerciseRepository.findAll({
               name: { contains: searchQuery, mode: 'insensitive' },
               type: type !== exerciseTypes.all ? type : undefined,
+              category: category
+                 ? exerciseCategoryRecords[category]
+                 : undefined,
            })
          : type === exerciseTypes.all
            ? await ExerciseRepository.findAllWithPagination(
                 Number(skip),
                 Number(take),
-                {}
+                {
+                   category: category
+                      ? exerciseCategoryRecords[category]
+                      : undefined,
+                }
              )
            : await ExerciseRepository.findAllWithPagination(
                 Number(skip),
                 Number(take),
                 {
                    type: type,
+                   category: category
+                      ? exerciseCategoryRecords[category]
+                      : undefined,
                 }
              );
       return exercises?.map((exercise: ExerciseResponseInput) => {

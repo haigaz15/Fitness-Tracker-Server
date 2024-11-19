@@ -163,7 +163,7 @@ export class UpdateWorkoutSessionVolumeResponseDTO {
 
 export interface WorkoutSession {
    id: string;
-   sessionTime: Date;
+   sessionTime: number;
    totalReps: number;
    totalSets: number;
    totalWeight: number;

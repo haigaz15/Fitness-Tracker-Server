@@ -134,7 +134,7 @@ const endWorkoutSession = async (
                  updatedWorkout.startTime,
                  updatedWorkout.endTime
               )
-            : '';
+            : 0;
       await WorkoutSessionRepository.createOne({
          externalId: workoutSessionExternalId,
          sessionTime: elapsedTime,

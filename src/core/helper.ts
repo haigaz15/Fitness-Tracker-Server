@@ -1,8 +1,11 @@
 import { ExerciseVoulmeItem } from '../modules/exercise-library/exercise.type';
 
-export const calculateElapsedTime = (startTime: Date, endTime: Date): Date => {
+export const calculateElapsedTime = (
+   startTime: Date,
+   endTime: Date
+): number => {
    const elapsedMs = endTime.getTime() - startTime.getTime();
-   return new Date(elapsedMs);
+   return elapsedMs;
 };
 
 export const volumeToTotal = (volume: ExerciseVoulmeItem): number => {

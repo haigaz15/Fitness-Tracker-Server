@@ -50,7 +50,7 @@ model Workout {
 model WorkoutSession {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   externalId  String   @unique @default(uuid())
-  sessionTime DateTime
+  sessionTime Int
   totalReps   Int
   totalSets   Int
   totalWeight Int

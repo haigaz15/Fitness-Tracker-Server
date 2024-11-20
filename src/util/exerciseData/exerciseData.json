@@ -1,0 +1,974 @@
+[
+   {
+      "name": "Push-up",
+      "type": "bodyweight",
+      "description": "A basic exercise targeting the chest, shoulders, and triceps. Begin in a plank position with your hands shoulder-width apart, lower your body until your chest almost touches the ground, and then push back up.",
+      "primaryMuscle": "Pectorals",
+      "secondaryMuscles": "Triceps, Deltoids",
+      "category": "Chest",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Squat",
+      "type": "bodyweight",
+      "description": "This compound movement targets the quads, hamstrings, and glutes. Stand with your feet shoulder-width apart, lower your hips back and down as if sitting into a chair, keeping your chest up, then return to the standing position.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Lunges",
+      "type": "bodyweight",
+      "description": "Lunges work the legs and glutes. Step forward with one leg and lower your hips until both knees are bent at about a 90-degree angle, then push back to the starting position.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Plank",
+      "type": "bodyweight",
+      "description": "A core stability exercise. Start in a forearm plank position with your body straight, keeping your abs tight, hold the position for time. This targets the abs, shoulders, and core.",
+      "primaryMuscle": "Pectorals",
+      "secondaryMuscles": "Deltoids, Triceps",
+      "category": "Chest",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Burpees",
+      "type": "bodyweight",
+      "description": "A full-body exercise that engages multiple muscle groups. Start in a standing position, drop into a squat, kick your feet back to a plank position, perform a push-up, jump back into the squat position, and then jump up with hands overhead.",
+      "primaryMuscle": "Pectorals",
+      "secondaryMuscles": "Quadriceps, Triceps, Deltoids",
+      "category": "Cardio",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Mountain Climbers",
+      "type": "bodyweight",
+      "description": "A dynamic exercise for the core and shoulders. Start in a plank position, then alternate driving your knees towards your chest rapidly, mimicking a climbing motion.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Quadriceps, Triceps",
+      "category": "Cardio",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Glute Bridges",
+      "type": "bodyweight",
+      "description": "A lower body exercise that targets the glutes and hamstrings. Lie on your back with knees bent, feet flat on the floor. Lift your hips towards the ceiling, squeezing your glutes, and lower back down.",
+      "primaryMuscle": "Glutes",
+      "secondaryMuscles": "Hamstrings, Lower Back",
+      "category": "Legs",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Tricep Dips",
+      "type": "bodyweight",
+      "description": "A great bodyweight exercise to target the triceps. Sit on the edge of a bench or platform, place your hands beside you, and lower your body towards the ground by bending your elbows, then push back up.",
+      "primaryMuscle": "Triceps",
+      "secondaryMuscles": "Deltoids",
+      "category": "Arms",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Side Plank",
+      "type": "bodyweight",
+      "description": "A core-focused exercise that strengthens the obliques. Lie on your side, prop your body up on one arm, and hold the position with your body in a straight line.",
+      "primaryMuscle": "Obliques",
+      "secondaryMuscles": "Deltoids",
+      "category": "Core",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Russian Twists",
+      "type": "bodyweight",
+      "description": "A rotational movement that engages the abs and obliques. Sit on the floor with your knees bent, lean back slightly, and twist your torso from side to side, tapping the floor beside you.",
+      "primaryMuscle": "Obliques",
+      "secondaryMuscles": "Pectorals",
+      "category": "Core",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Jumping Jacks",
+      "type": "bodyweight",
+      "description": "A classic cardiovascular exercise that works the whole body. Stand tall, then jump your feet out while raising your arms above your head. Return to starting position and repeat.",
+      "primaryMuscle": "Calves",
+      "secondaryMuscles": "Deltoids, Quadriceps",
+      "category": "Cardio",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Leg Raises",
+      "type": "bodyweight",
+      "description": "An effective exercise for the lower abs. Lie flat on your back, lift your legs toward the ceiling while keeping them straight, then slowly lower them back down.",
+      "primaryMuscle": "Lower Abs",
+      "secondaryMuscles": "Upper Abs",
+      "category": "Core",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Bear Crawl",
+      "type": "bodyweight",
+      "description": "A dynamic full-body movement that engages the core, arms, and legs. Start on all fours, then move your right hand and left foot forward at the same time, followed by the left hand and right foot.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Quadriceps",
+      "category": "Cardio",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "High Knees",
+      "type": "bodyweight",
+      "description": "A cardio exercise that targets the hip flexors and legs. Stand tall and quickly drive one knee towards your chest, alternating legs rapidly.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Calves, Hip Flexors",
+      "category": "Cardio",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Crunches",
+      "type": "bodyweight",
+      "description": "A popular abdominal exercise. Lie on your back with your knees bent and hands behind your head. Curl your upper body towards your knees while keeping your lower back on the ground.",
+      "primaryMuscle": "Upper Abs",
+      "secondaryMuscles": "Obliques",
+      "category": "Core",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Superman",
+      "type": "bodyweight",
+      "description": "This exercise targets the lower back and glutes. Lie on your stomach, extend your arms in front of you, and lift your chest and legs off the ground simultaneously, holding the position for a moment.",
+      "primaryMuscle": "Lower Back",
+      "secondaryMuscles": "Glutes",
+      "category": "Legs",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Wall Sit",
+      "type": "bodyweight",
+      "description": "An isometric exercise that works the quadriceps. Lean against a wall, slide down until your thighs are parallel to the floor, and hold the position.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Calves",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Barbell Bench Press",
+      "type": "barbell",
+      "description": "A compound chest exercise that targets the pectorals and triceps. Lie flat on a bench, grip the barbell slightly wider than shoulder-width, lower the barbell to your chest, and press it back up.",
+      "primaryMuscle": "Pectorals",
+      "secondaryMuscles": "Triceps, Deltoids",
+      "category": "Chest",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Barbell Squat",
+      "type": "barbell",
+      "description": "A lower body movement that engages the quadriceps, glutes, and hamstrings. Place a barbell across your upper back, lower your hips back and down, then return to standing.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Barbell Deadlift",
+      "type": "barbell",
+      "description": "A compound movement targeting the lower back, glutes, hamstrings, and traps. Begin with the barbell on the ground, bend at the hips and knees, grip the bar, and lift with your back straight until you're standing tall.",
+      "primaryMuscle": "Hamstrings",
+      "secondaryMuscles": "Glutes, Lower Back",
+      "category": "Back",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Barbell Overhead Press",
+      "type": "barbell",
+      "description": "A shoulder exercise that works the deltoids and triceps. Grip the barbell at shoulder height, press it overhead until your arms are fully extended, and lower it back to shoulder height.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Triceps",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Barbell Row",
+      "type": "barbell",
+      "description": "A back exercise that targets the lats, rhomboids, and traps. Bend at the hips, keep your back straight, and pull the barbell towards your torso, squeezing your shoulder blades together.",
+      "primaryMuscle": "Lats",
+      "secondaryMuscles": "Rhomboids, Trapezius",
+      "category": "Back",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Barbell Lunges",
+      "type": "barbell",
+      "description": "A unilateral leg exercise that works the quadriceps and glutes. Hold a barbell on your upper back, step forward with one leg, lower your hips until both knees are at 90-degree angles, then push back to starting position.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Barbell Shrugs",
+      "type": "barbell",
+      "description": "A trapezius exercise. Stand tall with the barbell in front of you, shrug your shoulders towards your ears, and slowly lower them back down.",
+      "primaryMuscle": "Trapezius",
+      "secondaryMuscles": "Deltoids",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Barbell Hip Thrust",
+      "type": "barbell",
+      "description": "A glute exercise that also works the hamstrings. Sit on the floor with your upper back against a bench, place a barbell across your hips, and thrust your hips upward, squeezing your glutes.",
+      "primaryMuscle": "Glutes",
+      "secondaryMuscles": "Hamstrings, Lower Back",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Barbell Bicep Curl",
+      "type": "barbell",
+      "description": "A bicep exercise. Stand tall with the barbell in your hands, curl the barbell up towards your chest while keeping your elbows close to your body, then slowly lower it back down.",
+      "primaryMuscle": "Biceps",
+      "secondaryMuscles": "Forearms",
+      "category": "Arms",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Barbell Skull Crushers",
+      "type": "barbell",
+      "description": "A tricep exercise performed while lying on a bench. Hold the barbell with arms extended, lower the bar to your forehead by bending your elbows, and then extend your arms back up.",
+      "primaryMuscle": "Triceps",
+      "secondaryMuscles": "Forearms",
+      "category": "Arms",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Barbell Chest Press",
+      "type": "barbell",
+      "description": "A compound movement for the chest, triceps, and shoulders. Lie on a bench, press the barbell from chest height to arms-length, and return it to chest height.",
+      "primaryMuscle": "Pectorals",
+      "secondaryMuscles": "Deltoids, Triceps",
+      "category": "Chest",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Barbell Front Squat",
+      "type": "barbell",
+      "description": "A variation of the squat that emphasizes the quadriceps. Hold the barbell across the front of your shoulders, squat down with your chest up, then return to standing.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Barbell Romanian Deadlift",
+      "type": "barbell",
+      "description": "A variation of the deadlift that emphasizes the hamstrings and glutes. With a barbell in hand, hinge at the hips and lower the bar towards your knees, then return to standing.",
+      "primaryMuscle": "Hamstrings",
+      "secondaryMuscles": "Glutes, Lower Back",
+      "category": "Back",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Barbell Clean and Press",
+      "type": "barbell",
+      "description": "A full-body compound exercise. Start with the barbell on the ground, clean it to your shoulders, and press it overhead in one fluid movement.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Quadriceps, Trapezius",
+      "category": "Shoulders",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Barbell Calf Raise",
+      "type": "barbell",
+      "description": "A calf exercise. Stand with a barbell on your shoulders and your feet on a raised platform, then lift your heels to stand on the balls of your feet, targeting the calves.",
+      "primaryMuscle": "Calves",
+      "secondaryMuscles": "Glutes",
+      "category": "Legs",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Barbell T-Bar Row",
+      "type": "barbell",
+      "description": "A row variation targeting the middle back. Position one end of the barbell in a corner, load the other end, and use a V-handle to row the bar towards your torso.",
+      "primaryMuscle": "Rhomboids",
+      "secondaryMuscles": "Lats, Trapezius",
+      "category": "Back",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Barbell Zercher Squat",
+      "type": "barbell",
+      "description": "A squat variation where the barbell is held in the crooks of the elbows, emphasizing the quads and core. Lower your hips back and down, keeping your torso upright.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Barbell Snatch",
+      "type": "barbell",
+      "description": "An Olympic lift that works nearly every muscle in the body. Lift the barbell from the floor to overhead in one continuous motion.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Quadriceps, Lats",
+      "category": "Shoulders",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Barbell Shrug",
+      "type": "barbell",
+      "description": "A shoulder and trapezius exercise. Hold the barbell with both hands, shrug your shoulders up as high as you can, then lower them back down.",
+      "primaryMuscle": "Trapezius",
+      "secondaryMuscles": "Deltoids",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Barbell Push Press",
+      "type": "barbell",
+      "description": "A dynamic overhead press that uses the legs for momentum. Start with the barbell at shoulder height, dip slightly with your knees, and press the barbell overhead.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Triceps",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Barbell Good Morning",
+      "type": "barbell",
+      "description": "A posterior chain exercise that targets the hamstrings and lower back. With a barbell on your shoulders, hinge at the hips and lower your torso while keeping your back straight, then return to standing.",
+      "primaryMuscle": "Hamstrings",
+      "secondaryMuscles": "Glutes, Lower Back",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Barbell Hack Squat",
+      "type": "barbell",
+      "description": "A squat variation where the barbell is positioned behind your legs. Lower your hips as you squat while keeping your chest upright, then press through the heels to stand back up.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Barbell Incline Bench Press",
+      "type": "barbell",
+      "description": "A chest exercise targeting the upper pectorals. Lie on an incline bench and press the barbell upward from chest level.",
+      "primaryMuscle": "Pectorals",
+      "secondaryMuscles": "Deltoids, Triceps",
+      "category": "Chest",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Bench Press",
+      "type": "dumbbell",
+      "description": "A chest exercise targeting the pectorals. Lie flat on a bench holding a dumbbell in each hand, press them up above your chest, and lower them back down.",
+      "primaryMuscle": "Pectorals",
+      "secondaryMuscles": "Triceps, Deltoids",
+      "category": "Chest",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Squat",
+      "type": "dumbbell",
+      "description": "A lower body movement that works the quadriceps, glutes, and hamstrings. Hold a dumbbell in each hand at your sides, squat down, and then return to standing.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Deadlift",
+      "type": "dumbbell",
+      "description": "A full-body exercise targeting the hamstrings, glutes, and lower back. Hold a dumbbell in each hand, bend at the hips, and lower them down toward the floor, then return to standing.",
+      "primaryMuscle": "Hamstrings",
+      "secondaryMuscles": "Glutes, Lower Back",
+      "category": "Back",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Overhead Press",
+      "type": "dumbbell",
+      "description": "A shoulder exercise that targets the deltoids and triceps. Hold a dumbbell in each hand at shoulder height, press them overhead until your arms are fully extended, then lower them back to the start.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Triceps",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Row",
+      "type": "dumbbell",
+      "description": "A back exercise that works the lats, rhomboids, and traps. Bend at the waist, support your body with one arm, and row a dumbbell to your side, squeezing your shoulder blades together.",
+      "primaryMuscle": "Lats",
+      "secondaryMuscles": "Rhomboids, Trapezius",
+      "category": "Back",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Lunges",
+      "type": "dumbbell",
+      "description": "A lower body movement that targets the quadriceps, hamstrings, and glutes. Hold a dumbbell in each hand and step forward into a lunge, then push back to starting position.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Shrugs",
+      "type": "dumbbell",
+      "description": "A shoulder exercise that targets the trapezius. Stand tall, holding a dumbbell in each hand, and shrug your shoulders up as high as you can, then slowly lower them back down.",
+      "primaryMuscle": "Trapezius",
+      "secondaryMuscles": "Deltoids",
+      "category": "Shoulders",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Dumbbell Hip Thrust",
+      "type": "dumbbell",
+      "description": "A glute exercise performed with your upper back on a bench and a dumbbell placed across your hips. Thrust your hips upward, squeezing your glutes at the top, then lower back down.",
+      "primaryMuscle": "Glutes",
+      "secondaryMuscles": "Hamstrings",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Bicep Curl",
+      "type": "dumbbell",
+      "description": "A bicep exercise. Hold a dumbbell in each hand, curl them towards your shoulders, and slowly lower them back down.",
+      "primaryMuscle": "Biceps",
+      "secondaryMuscles": "Forearms",
+      "category": "Arms",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Dumbbell Tricep Kickback",
+      "type": "dumbbell",
+      "description": "A tricep exercise. Hold a dumbbell in one hand, bend over slightly, and extend your arm behind you, fully extending your triceps, then return to the start.",
+      "primaryMuscle": "Triceps",
+      "secondaryMuscles": "Forearms",
+      "category": "Arms",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Chest Fly",
+      "type": "dumbbell",
+      "description": "A chest isolation exercise. Lie flat on a bench, hold a dumbbell in each hand, and lower your arms out to the sides before bringing them back together over your chest.",
+      "primaryMuscle": "Pectorals",
+      "secondaryMuscles": "Deltoids",
+      "category": "Chest",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Front Raise",
+      "type": "dumbbell",
+      "description": "A shoulder exercise that isolates the front deltoids. Hold a dumbbell in each hand and raise your arms straight in front of you to shoulder height, then lower them back down.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Trapezius",
+      "category": "Shoulders",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Dumbbell Romanian Deadlift",
+      "type": "dumbbell",
+      "description": "A variation of the deadlift that focuses on the hamstrings and glutes. Hold a dumbbell in each hand, hinge at the hips, and lower the weights down toward your knees before returning to standing.",
+      "primaryMuscle": "Hamstrings",
+      "secondaryMuscles": "Glutes, Lower Back",
+      "category": "Back",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Squat to Press",
+      "type": "dumbbell",
+      "description": "A full-body movement. Hold a dumbbell in each hand at shoulder height, squat down, then press the dumbbells overhead as you return to standing.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Deltoids, Triceps",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Bulgarian Split Squat",
+      "type": "dumbbell",
+      "description": "A unilateral leg exercise that targets the quadriceps and glutes. Hold a dumbbell in each hand, place one foot behind you on a bench, and squat down with the other leg.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Dumbbell Lateral Raise",
+      "type": "dumbbell",
+      "description": "A shoulder exercise that targets the lateral deltoids. Hold a dumbbell in each hand and raise your arms to the sides until they reach shoulder height, then lower them back down.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Trapezius",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Step-Up",
+      "type": "dumbbell",
+      "description": "A lower body exercise that targets the quadriceps and glutes. Hold a dumbbell in each hand, step up onto a bench or box, and then step back down.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Renegade Row",
+      "type": "dumbbell",
+      "description": "A full-body exercise that works the back, chest, and core. Hold a dumbbell in each hand in a plank position, row one dumbbell towards your torso, then alternate.",
+      "primaryMuscle": "Lats",
+      "secondaryMuscles": "Core, Trapezius",
+      "category": "Back",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Hammer Curl",
+      "type": "dumbbell",
+      "description": "A variation of the bicep curl that targets the brachioradialis. Hold a dumbbell in each hand with palms facing each other, curl the weights up, then lower them back down.",
+      "primaryMuscle": "Biceps",
+      "secondaryMuscles": "Forearms",
+      "category": "Arms",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Dumbbell Woodchop",
+      "type": "dumbbell",
+      "description": "A rotational exercise that works the core. Hold a dumbbell with both hands and twist your torso to bring the weight from one side of your body to the other.",
+      "primaryMuscle": "Obliques",
+      "secondaryMuscles": "Core",
+      "category": "Core",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Chest Press",
+      "type": "dumbbell",
+      "description": "A chest exercise performed on a bench. Press the dumbbells up from chest level and lower them back down to the sides of your chest.",
+      "primaryMuscle": "Pectorals",
+      "secondaryMuscles": "Deltoids, Triceps",
+      "category": "Chest",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Dumbbell Glute Bridge",
+      "type": "dumbbell",
+      "description": "A glute-focused exercise performed lying on your back with your feet flat on the floor. Place a dumbbell across your hips and thrust your hips upward, squeezing the glutes at the top.",
+      "primaryMuscle": "Glutes",
+      "secondaryMuscles": "Hamstrings",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Chest Press",
+      "type": "cable",
+      "description": "A chest exercise targeting the pectorals. Stand facing away from the cable machine with the cables in both hands, and press them forward in a straight line from your chest, then slowly return to starting position.",
+      "primaryMuscle": "Pectorals",
+      "secondaryMuscles": "Triceps, Deltoids",
+      "category": "Chest",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Squat",
+      "type": "cable",
+      "description": "A lower body movement targeting the quadriceps, glutes, and hamstrings. Stand facing the cable machine with the rope attachment at chest height, pull it toward your chest, squat down, and return to standing.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Deadlift",
+      "type": "cable",
+      "description": "A full-body movement that targets the hamstrings, glutes, and lower back. Attach the rope to a low pulley, grab the ends, and hinge at your hips to lower the rope toward the floor, then return to standing.",
+      "primaryMuscle": "Hamstrings",
+      "secondaryMuscles": "Glutes, Lower Back",
+      "category": "Back",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Overhead Press",
+      "type": "cable",
+      "description": "A shoulder exercise targeting the deltoids. Attach two cables at low pulley settings, hold them in each hand at shoulder height, and press them overhead until your arms are fully extended.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Triceps",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Row",
+      "type": "cable",
+      "description": "A back exercise that targets the lats, rhomboids, and traps. Sit on the bench facing the machine, hold the handle with both hands, and pull the cable towards your torso while squeezing your shoulder blades together.",
+      "primaryMuscle": "Lats",
+      "secondaryMuscles": "Rhomboids, Trapezius",
+      "category": "Back",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Lunges",
+      "type": "cable",
+      "description": "A lower body movement that targets the quadriceps, hamstrings, and glutes. Stand facing the machine, hold the handles, and lunge forward, making sure to keep your knee in line with your toes.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Tricep Pushdown",
+      "type": "cable",
+      "description": "A tricep exercise. Attach a rope to the high pulley, hold the ends, and pull the rope down toward your thighs, fully extending your arms and squeezing your triceps at the bottom.",
+      "primaryMuscle": "Triceps",
+      "secondaryMuscles": "Forearms",
+      "category": "Arms",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Cable Bicep Curl",
+      "type": "cable",
+      "description": "A bicep exercise. Attach a bar to the low pulley, stand facing the machine, curl the bar toward your chest, and slowly lower it back down to the starting position.",
+      "primaryMuscle": "Biceps",
+      "secondaryMuscles": "Forearms",
+      "category": "Arms",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Cable Face Pull",
+      "type": "cable",
+      "description": "A rear deltoid and upper back exercise. Attach the rope to the high pulley, hold both ends with your palms facing in, and pull the rope towards your face, squeezing your shoulder blades together.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Trapezius, Rhomboids",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Lateral Raise",
+      "type": "cable",
+      "description": "A shoulder exercise targeting the lateral deltoids. Stand sideways to the cable machine, hold the cable with one hand, and raise your arm out to the side until it's level with your shoulder.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Trapezius",
+      "category": "Shoulders",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Cable Glute Kickback",
+      "type": "cable",
+      "description": "A glute exercise. Attach an ankle strap to the low pulley, strap it to your ankle, and kick your leg back while keeping your core stable.",
+      "primaryMuscle": "Glutes",
+      "secondaryMuscles": "Hamstrings",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Ab Crunch",
+      "type": "cable",
+      "description": "A core exercise. Attach a rope to the high pulley, kneel in front of the machine, grab the rope with both hands, and crunch forward, bringing your elbows toward your knees.",
+      "primaryMuscle": "Upper Abs",
+      "secondaryMuscles": "Core",
+      "category": "Core",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Woodchopper",
+      "type": "cable",
+      "description": "A rotational core exercise. Attach a rope to the high pulley, stand sideways, and pull the rope diagonally across your body, twisting your torso as you bring it down.",
+      "primaryMuscle": "Obliques",
+      "secondaryMuscles": "Core",
+      "category": "Core",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Pull Through",
+      "type": "cable",
+      "description": "A glute and hamstring exercise. Attach a rope to the low pulley, stand facing the machine, pull the rope between your legs, and stand back up by driving your hips forward.",
+      "primaryMuscle": "Glutes",
+      "secondaryMuscles": "Hamstrings",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Chest Fly",
+      "type": "cable",
+      "description": "A chest exercise targeting the pectorals. Stand facing the machine, grab the handles, and bring your arms together in front of you, then slowly return them to the starting position.",
+      "primaryMuscle": "Pectorals",
+      "secondaryMuscles": "Deltoids, Triceps",
+      "category": "Chest",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Seated Row",
+      "type": "cable",
+      "description": "A back exercise that works the lats and rhomboids. Sit on the bench, grasp the handle, and row it towards your torso, squeezing your shoulder blades together.",
+      "primaryMuscle": "Lats",
+      "secondaryMuscles": "Rhomboids, Trapezius",
+      "category": "Back",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Single Arm Pulldown",
+      "type": "cable",
+      "description": "A back exercise targeting the lats. Stand facing the cable machine, grasp the single handle, and pull the cable down toward your chest, keeping your torso stable.",
+      "primaryMuscle": "Lats",
+      "secondaryMuscles": "Trapezius, Biceps",
+      "category": "Back",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Reverse Fly",
+      "type": "cable",
+      "description": "A shoulder exercise that targets the rear deltoids. Set the cables at chest height, grasp both handles, and pull the cables back in a reverse fly motion.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Rhomboids, Trapezius",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Bicep Curl",
+      "type": "cable",
+      "description": "A bicep exercise. Stand facing the cable machine, grab the bar attachment, and curl the bar toward your chest while keeping your elbows stationary.",
+      "primaryMuscle": "Biceps",
+      "secondaryMuscles": "Forearms",
+      "category": "Arms",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Cable Tricep Extension",
+      "type": "cable",
+      "description": "A tricep exercise. Attach a rope to the high pulley, grab the ends, and extend your arms downward, fully engaging your triceps.",
+      "primaryMuscle": "Triceps",
+      "secondaryMuscles": "Forearms",
+      "category": "Arms",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Shrug",
+      "type": "cable",
+      "description": "A trap exercise. Attach two single handles to the low pulley, grab them with both hands, and shrug your shoulders up toward your ears.",
+      "primaryMuscle": "Trapezius",
+      "secondaryMuscles": "Deltoids",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable High Pull",
+      "type": "cable",
+      "description": "A shoulder and upper back exercise. Attach a wide bar to the high pulley, grasp it with both hands, and pull it upwards towards your chin while engaging your deltoids and traps.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Trapezius",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Cable Hip Abduction",
+      "type": "cable",
+      "description": "A glute exercise. Attach the ankle strap to the low pulley, strap it to your ankle, and abduct your leg outward while keeping your hips square.",
+      "primaryMuscle": "Glutes",
+      "secondaryMuscles": "Hip Flexors",
+      "category": "Legs",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Kettlebell Swing",
+      "type": "kettlebell",
+      "description": "A full-body exercise that targets the glutes, hamstrings, and lower back. Stand with feet shoulder-width apart, hold the kettlebell with both hands, and swing it between your legs before driving your hips forward to swing it up to chest level.",
+      "primaryMuscle": "Glutes",
+      "secondaryMuscles": "Hamstrings, Lower Back",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Goblet Squat",
+      "type": "kettlebell",
+      "description": "A lower body exercise focusing on the quadriceps, glutes, and hamstrings. Hold a kettlebell close to your chest with both hands and squat down while keeping your back straight and knees in line with your toes.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Deadlift",
+      "type": "kettlebell",
+      "description": "A full-body movement targeting the hamstrings, glutes, and lower back. Place the kettlebell in front of you, stand with your feet shoulder-width apart, hinge at the hips, and lower the kettlebell to the ground before returning to a standing position.",
+      "primaryMuscle": "Hamstrings",
+      "secondaryMuscles": "Glutes, Lower Back",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Clean and Press",
+      "type": "kettlebell",
+      "description": "A full-body power exercise targeting the shoulders, legs, and arms. Start by swinging the kettlebell between your legs, then clean it to your shoulder and press it overhead until your arm is fully extended.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Triceps, Quadriceps",
+      "category": "Shoulders",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Kettlebell Snatch",
+      "type": "kettlebell",
+      "description": "A dynamic movement targeting the shoulders, glutes, and hamstrings. Swing the kettlebell between your legs, then explode upwards to catch it overhead in one motion, keeping your core tight throughout.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Shoulders",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Kettlebell Russian Twist",
+      "type": "kettlebell",
+      "description": "A rotational core exercise that targets the obliques. Sit on the floor with knees bent, hold the kettlebell with both hands, and twist your torso side to side while keeping your feet elevated.",
+      "primaryMuscle": "Obliques",
+      "secondaryMuscles": "Core",
+      "category": "Core",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Renegade Row",
+      "type": "kettlebell",
+      "description": "A back exercise that works the lats and core. Get into a plank position with one kettlebell in each hand, and row one kettlebell towards your hip while maintaining stability through your core.",
+      "primaryMuscle": "Lats",
+      "secondaryMuscles": "Core, Trapezius",
+      "category": "Back",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Kettlebell Lunge",
+      "type": "kettlebell",
+      "description": "A lower body movement focusing on the quadriceps, hamstrings, and glutes. Hold a kettlebell in each hand at your sides and step forward into a lunge, lowering your body until your back knee almost touches the ground.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes, Hamstrings",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Squat Press",
+      "type": "kettlebell",
+      "description": "A compound exercise targeting the legs and shoulders. Hold a kettlebell in each hand at shoulder height, squat down, and as you rise back up, press the kettlebells overhead.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Quadriceps, Triceps",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell High Pull",
+      "type": "kettlebell",
+      "description": "An explosive movement targeting the shoulders, traps, and upper back. Swing the kettlebell between your legs and then pull it up towards your chest, leading with your elbows.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Trapezius",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Windmill",
+      "type": "kettlebell",
+      "description": "A core and shoulder exercise. Hold a kettlebell overhead with one arm, and while keeping your eyes on the kettlebell, lower your torso towards the floor and rotate your body to reach the ground with your free hand.",
+      "primaryMuscle": "Obliques",
+      "secondaryMuscles": "Shoulders, Glutes",
+      "category": "Core",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Kettlebell Split Squat",
+      "type": "kettlebell",
+      "description": "A unilateral leg exercise that targets the quadriceps and glutes. Hold a kettlebell in one hand at your side and lower your back knee toward the floor in a split stance, then return to standing.",
+      "primaryMuscle": "Quadriceps",
+      "secondaryMuscles": "Glutes",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Thruster",
+      "type": "kettlebell",
+      "description": "A full-body exercise combining a squat and an overhead press. Hold the kettlebells at shoulder height, squat down, and as you rise, press the kettlebells overhead.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Quadriceps, Glutes",
+      "category": "Shoulders",
+      "difficulty": "Hard"
+   },
+   {
+      "name": "Kettlebell Single-Leg Deadlift",
+      "type": "kettlebell",
+      "description": "A lower body exercise that targets the hamstrings, glutes, and core. Hold a kettlebell in one hand, and as you hinge at the hips, extend one leg behind you while lowering the kettlebell to the ground.",
+      "primaryMuscle": "Hamstrings",
+      "secondaryMuscles": "Glutes, Core",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Chest Press",
+      "type": "kettlebell",
+      "description": "A chest exercise that works the pectorals and triceps. Lie on a bench holding a kettlebell in each hand at chest level, then press the kettlebells straight up towards the ceiling.",
+      "primaryMuscle": "Pectorals",
+      "secondaryMuscles": "Triceps",
+      "category": "Chest",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Russian Kettlebell Swing",
+      "type": "kettlebell",
+      "description": "A variation of the kettlebell swing that targets the glutes, hamstrings, and lower back. Swing the kettlebell to chest height, focusing on hip drive rather than lifting with the arms.",
+      "primaryMuscle": "Glutes",
+      "secondaryMuscles": "Hamstrings, Lower Back",
+      "category": "Legs",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Clean",
+      "type": "kettlebell",
+      "description": "A powerful movement that targets the legs and shoulders. Swing the kettlebell between your legs, then explosively pull it to your shoulder in one smooth motion.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Triceps, Quadriceps",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Curl to Press",
+      "type": "kettlebell",
+      "description": "An upper body exercise that targets the biceps, shoulders, and triceps. Curl the kettlebells towards your chest, then press them overhead in a fluid motion.",
+      "primaryMuscle": "Biceps",
+      "secondaryMuscles": "Deltoids, Triceps",
+      "category": "Arms",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Farmer's Walk",
+      "type": "kettlebell",
+      "description": "A strength endurance exercise that targets the grip, forearms, and shoulders. Hold a kettlebell in each hand, stand tall, and walk a certain distance while maintaining good posture.",
+      "primaryMuscle": "Forearms",
+      "secondaryMuscles": "Shoulders",
+      "category": "Arms",
+      "difficulty": "Easy"
+   },
+   {
+      "name": "Kettlebell Push Press",
+      "type": "kettlebell",
+      "description": "A power exercise targeting the shoulders and legs. Hold the kettlebell in a rack position, dip slightly into a squat, and then press the kettlebell overhead in one fluid motion.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Quadriceps, Triceps",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Plank Row",
+      "type": "kettlebell",
+      "description": "A back and core exercise. Get into a plank position, hold a kettlebell in each hand, and row each kettlebell to your hip one at a time while keeping your core stable.",
+      "primaryMuscle": "Lats",
+      "secondaryMuscles": "Core",
+      "category": "Back",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Sit-up",
+      "type": "kettlebell",
+      "description": "A core exercise that targets the abdominal muscles. Hold a kettlebell to your chest while lying on the floor, and as you sit up, press the kettlebell overhead.",
+      "primaryMuscle": "Upper Abs",
+      "secondaryMuscles": "Lower Abs",
+      "category": "Core",
+      "difficulty": "Medium"
+   },
+   {
+      "name": "Kettlebell Shoulder Press",
+      "type": "kettlebell",
+      "description": "A shoulder exercise. Hold a kettlebell in each hand at shoulder height and press them overhead until your arms are fully extended.",
+      "primaryMuscle": "Deltoids",
+      "secondaryMuscles": "Triceps",
+      "category": "Shoulders",
+      "difficulty": "Medium"
+   }
+]

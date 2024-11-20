@@ -62,6 +62,10 @@ const createWorkout = async (req: GetUserAuthInfoRequest, res: Response) => {
       const dbExercises = await ExerciseRepository.findAll({
          name: { in: exerciseNames },
       });
+      const exerciseNameIdMap: { [key: string]: string } = {};
+      dbExercises?.forEach((exercise) => {
+         exerciseNameIdMap[exercise.name] = exercise.id;
+      });
       if (!dbExercises || dbExercises.length === 0) {
          throw notFoundError(CUSTOM_EXERCISE_ERROR_MESSAGES.EXERCISE_NOT_FOUND);
       }
@@ -71,12 +75,13 @@ const createWorkout = async (req: GetUserAuthInfoRequest, res: Response) => {
       await ExerciseOnWorkoutSessionRepository.createMany(
          dbExercises?.map((e: any, index: number) => {
             return {
+               exerciseIndex: index,
                rest: exercises[index].rest,
                weight: exercises[index].weight,
                set: exercises[index].set,
                reps: exercises[index].reps,
                workoutId: workout.id,
-               exerciseId: e.id,
+               exerciseId: exerciseNameIdMap[exercises[index].name],
             };
          })
       );
@@ -173,10 +178,10 @@ const updateWorkoutSessionVolume = async (
       const updatedWorkoutSession = await WorkoutSessionRepository.updateOne(
          { externalId: sessionId },
          {
-            totalSets: Number(workoutSessionVolume.set),
-            totalReps: volumeToTotal(workoutSessionVolume.reps),
-            totalRest: volumeToTotal(workoutSessionVolume.rest),
-            totalWeight: volumeToTotal(workoutSessionVolume.weight),
+            totalSets: workoutSessionVolume.totalSets,
+            totalReps: workoutSessionVolume.totalReps,
+            totalRest: workoutSessionVolume.totalRest,
+            totalWeight: workoutSessionVolume.totalWeight,
          }
       );
       return new UpdateWorkoutSessionVolumeResponseDTO(sessionId);

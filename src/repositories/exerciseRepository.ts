@@ -41,7 +41,7 @@ const createOne = async (
 };
 
 const createMany = async (
-   data: PrismaExercise[]
+   data: PrismaCreateExercise[]
 ): Promise<{ count: number }> => {
    return await prisma.exercise.createMany({ data });
 };

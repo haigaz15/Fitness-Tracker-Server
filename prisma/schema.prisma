@@ -8,15 +8,16 @@ generator client {
 }
 
 model ExerciseOnWorkout {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  exercise   Exercise @relation(fields: [exerciseId], references: [id])
-  exerciseId String   @db.ObjectId
-  workout    Workout  @relation(fields: [workoutId], references: [id], onDelete: Cascade)
-  workoutId  String   @db.ObjectId
-  set        Int
-  reps       String
-  rest       String?
-  weight     String?
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  exercise      Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId    String   @db.ObjectId
+  workout       Workout  @relation(fields: [workoutId], references: [id], onDelete: Cascade)
+  workoutId     String   @db.ObjectId
+  exerciseIndex Int
+  set           Int
+  reps          String
+  rest          String?
+  weight        String?
 }
 
 model Exercise {
@@ -123,6 +124,7 @@ enum MuscleGroup {
   WRIST_FLEXORS
   BRACHIORADIALIS
   LOWER_BACK
+  RHOMBOIDS
 }
 
 enum ExerciseCategory {
@@ -131,6 +133,7 @@ enum ExerciseCategory {
   LEGS
   ARMS
   BACK
+  CORE
   CARDIO
   STRETCH
 }

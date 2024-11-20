@@ -20,7 +20,7 @@ export type EquipmentType =
    | 'dumbbell'
    | 'cable'
    | 'bodyweight'
-   | 'kettle'
+   | 'kettlebell'
    | 'all';
 
 export interface ExerciseVolume {
@@ -40,7 +40,7 @@ export const exerciseTypes: Record<EquipmentType, string> = {
    dumbbell: 'dumbbell',
    cable: 'cable',
    bodyweight: 'bodyweight',
-   kettle: 'kettle',
+   kettlebell: 'kettlebell',
    all: 'all',
 };
 
@@ -77,6 +77,7 @@ export enum MuscleGroup {
    WRIST_FLEXORS = 'WRIST_FLEXORS',
    BRACHIORADIALIS = 'BRACHIORADIALIS',
    LOWER_BACK = 'LOWER_BACK',
+   RHOMBOIDS = 'RHOMBOIDS',
 }
 
 export enum ExerciseCategory {
@@ -87,6 +88,7 @@ export enum ExerciseCategory {
    BACK = 'BACK',
    CARDIO = 'CARDIO',
    STRETCH = 'STRETCH',
+   CORE = 'CORE',
 }
 
 export enum ExerciseDifficulty {
@@ -118,6 +120,7 @@ export const muscleGroupRecords: Record<string, MuscleGroup> = {
    'Wrist Flexors': MuscleGroup.WRIST_FLEXORS,
    Brachioradialis: MuscleGroup.BRACHIORADIALIS,
    'Lower Back': MuscleGroup.LOWER_BACK,
+   Rhomboids: MuscleGroup.RHOMBOIDS,
 };
 
 export const exerciseCategoryRecords: Record<string, ExerciseCategory> = {
@@ -128,6 +131,7 @@ export const exerciseCategoryRecords: Record<string, ExerciseCategory> = {
    Back: ExerciseCategory.BACK,
    Cardio: ExerciseCategory.CARDIO,
    Stretch: ExerciseCategory.STRETCH,
+   Core: ExerciseCategory.CORE,
 };
 
 export const exerciseDifficultyRecords: Record<string, ExerciseDifficulty> = {
@@ -159,6 +163,7 @@ export const muscleGroupRecordsInverse: Record<MuscleGroup, string> = {
    [MuscleGroup.WRIST_FLEXORS]: 'Wrist Flexors',
    [MuscleGroup.BRACHIORADIALIS]: 'Brachioradialis',
    [MuscleGroup.LOWER_BACK]: 'Lower Back',
+   [MuscleGroup.RHOMBOIDS]: 'Rhomboids',
 };
 
 export const exerciseCategoryRecordsInverse: Record<ExerciseCategory, string> =
@@ -170,6 +175,7 @@ export const exerciseCategoryRecordsInverse: Record<ExerciseCategory, string> =
       [ExerciseCategory.BACK]: 'Back',
       [ExerciseCategory.CARDIO]: 'Cardio',
       [ExerciseCategory.STRETCH]: 'Stretch',
+      [ExerciseCategory.CORE]: 'Core',
    };
 
 export const exerciseDifficultyRecordsInverse: Record<

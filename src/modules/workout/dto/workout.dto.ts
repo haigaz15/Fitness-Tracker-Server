@@ -135,22 +135,22 @@ export class EndWorkoutSessionResponseDTO {
 }
 
 interface UpdateWorkoutSessionVolumeInput {
-   reps: string;
-   set: number;
-   weight: string;
-   rest: string;
+   totalReps: number;
+   totalSets: number;
+   totalWeight: number;
+   totalRest: number;
 }
 
 export class UpdateWorkoutSessionVolumeRequestDTO {
-   reps: string;
-   set: number;
-   weight: string;
-   rest: string;
+   totalReps: number;
+   totalSets: number;
+   totalWeight: number;
+   totalRest: number;
    constructor(data: UpdateWorkoutSessionVolumeInput) {
-      this.reps = data.reps;
-      this.set = data.set;
-      this.weight = data.weight;
-      this.rest = data.rest;
+      this.totalReps = data.totalReps;
+      this.totalSets = data.totalSets;
+      this.totalWeight = data.totalWeight;
+      this.totalRest = data.totalRest;
    }
 }
 

@@ -17,6 +17,7 @@ export enum CUSTOM_EXERCISE_ERROR_MESSAGES {
 }
 export enum CUSTOM_USER_ERROR_MESSAGES {
    USER_ALREADY_EXIST = 'User with sent username already exist',
+   USER_NOT_FOUND = 'User cannot be found',
    USER_DATA_MISSING_OR_WORNG = 'Either firstName, lastName, username, email, password or all are missing please fill before proceeding',
 }
 export enum CUSTOM_WORKOUT_MESSAGES {
@@ -32,6 +33,10 @@ export enum CUSTMO_WORKOUT_SESSION_ERROR_MESSAGES {
    WORKOUT_SESSION_UPDATE_END_NOT_START = 'Start time is provided but the session is end',
    WORKOUT_SESSION_UPDATE_NO_START = 'Start time is empty please provide the start time',
    WORKOUT_SESSION_UPDATE_NO_END = 'End time is empty please provide the End time',
+}
+
+export enum CUSTOM_STAT_MESSAGES {
+   USER_WEIGHT_DONNOT_EXIST = 'Cannot calculate the burned calories do to missing user weight',
 }
 
 export enum HTTP_ERROR_MESSAGES {

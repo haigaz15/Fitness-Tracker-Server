@@ -9,4 +9,10 @@ router.get(
    WorkoutStatController.workoutIntensity
 );
 
+router.get(
+   '/workout-stat/calories',
+   authMiddleWare,
+   WorkoutStatController.caloriesBurned
+);
+
 export default router;

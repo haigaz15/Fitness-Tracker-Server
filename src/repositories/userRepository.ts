@@ -16,11 +16,11 @@ const findOne = async (
    return await prisma.user.findUnique({ where: query });
 };
 
-const findByIdAndUpdate = async (
+const updateOne = async (
    query: PrismaUserWhereUniqueInput,
    updatedFields: PrismaUserUpdateInput
 ) => {
    await prisma.user.update({ where: query, data: updatedFields });
 };
 
-export default { createOne, findOne, findByIdAndUpdate };
+export default { createOne, findOne, updateOne };

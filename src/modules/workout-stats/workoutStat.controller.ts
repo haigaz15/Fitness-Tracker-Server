@@ -16,4 +16,17 @@ const workoutIntensity = async (
    }
 };
 
-export default { workoutIntensity };
+const caloriesBurned = async (
+   req: Request,
+   res: Response,
+   next: NextFunction
+) => {
+   try {
+      const burnedCalories = await WorkoutStatService.caloriesBurned(req, res);
+      res.send({ burnedCaloriesPerSession: burnedCalories });
+   } catch (err) {
+      next(err);
+   }
+};
+
+export default { workoutIntensity, caloriesBurned };

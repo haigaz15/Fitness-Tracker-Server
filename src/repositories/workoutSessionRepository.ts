@@ -4,9 +4,9 @@ import {
    PrismaCreateWorkoutSession,
    PrismaWorkoutSession,
    PrismaWorkoutSessionUpdateInput,
+   PrismaWorkoutSessionWhereInput,
    PrismaWorkoutSessionWhereUniqueInput,
 } from '../modules/workout/workout-session.prisma.type';
-import { PrismaWorkoutWhereInput } from '../modules/workout/workout.prisma.type';
 
 const createOne = async (
    data: PrismaCreateWorkoutSession
@@ -36,4 +36,29 @@ const findAll = async (
    });
 };
 
-export default { createOne, updateOne, findOne, findAll };
+const groupWorkoutSessionsBySessionDate = async (
+   query?: PrismaWorkoutSessionWhereInput
+) => {
+   return await prisma.workoutSession.groupBy({
+      by: ['sessionDate'],
+      _sum: {
+         sessionTime: true,
+         totalReps: true,
+         totalSets: true,
+         totalWeight: true,
+         totalRest: true,
+      },
+      where: query,
+      orderBy: {
+         sessionDate: 'asc',
+      },
+   });
+};
+
+export default {
+   createOne,
+   updateOne,
+   findOne,
+   findAll,
+   groupWorkoutSessionsBySessionDate,
+};

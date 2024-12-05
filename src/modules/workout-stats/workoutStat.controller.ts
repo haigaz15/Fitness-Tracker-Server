@@ -23,7 +23,7 @@ const caloriesBurned = async (
 ) => {
    try {
       const burnedCalories = await WorkoutStatService.caloriesBurned(req, res);
-      res.send({ burnedCaloriesPerSession: burnedCalories });
+      res.send({ burnedCalories: burnedCalories });
    } catch (err) {
       next(err);
    }

@@ -15,6 +15,21 @@ const averageDurationOfEachExercise = () => {};
 
 const avgWeightLiftedPerSession = () => {};
 
+const calculateWeeklySessionRange = () => {
+   const today = new Date();
+   const day = today.getDay();
+   const diffToMonday = day === 0 ? -6 : 1 - day;
+
+   const monday = new Date(today);
+   monday.setDate(today.getDate() + diffToMonday);
+   monday.setHours(0, 0, 0, 0); //
+
+   const sunday = new Date(monday);
+   sunday.setDate(monday.getDate() + 6);
+   sunday.setHours(23, 59, 59, 999);
+   return [monday, sunday];
+};
+
 const caloriesBurned = async (req: GetUserAuthInfoRequest, res: Response) => {
    try {
       const MET = 6;
@@ -28,19 +43,34 @@ const caloriesBurned = async (req: GetUserAuthInfoRequest, res: Response) => {
       if (!userWeight) {
          throw notFoundError(CUSTOM_STAT_MESSAGES.USER_WEIGHT_DONNOT_EXIST);
       }
-      const workoutSessions = await WorkoutSessionRepository.findAll();
-      if (!workoutSessions || workoutSessions.length === 0) {
-         throw notFoundError(
-            CUSTMO_WORKOUT_SESSION_ERROR_MESSAGES.WORKOUT_SESSIONS_NOT_FOUND
-         );
-      }
-      const sessionTimesInHours = workoutSessions.map(
-         (workoutSession) => workoutSession.sessionTime / (1000 * 60 * 60)
+      const [monday, sunday] = calculateWeeklySessionRange();
+      const groupWorkoutSessionsBySessionDateData =
+         await WorkoutSessionRepository.groupWorkoutSessionsBySessionDate({
+            sessionDate: {
+               gte: monday,
+               lte: sunday,
+            },
+         });
+
+      const sessionTimesInHours = groupWorkoutSessionsBySessionDateData.map(
+         (workoutSession) =>
+            workoutSession._sum.sessionTime
+               ? workoutSession._sum.sessionTime / (1000 * 60 * 60)
+               : 0
       );
       const burnedCalories = sessionTimesInHours.map((duration) => {
          return MET * userWeight * duration;
       });
-      return burnedCalories;
+      return groupWorkoutSessionsBySessionDateData.map(
+         (workoutSession, index) => {
+            return {
+               day: workoutSession.sessionDate.toLocaleDateString('en-US', {
+                  weekday: 'short',
+               }),
+               burnedCaloriesPerDay: burnedCalories[index],
+            };
+         }
+      );
    } catch (err) {
       throw err;
    }
@@ -57,6 +87,10 @@ const calculateIntensity = (
    set: number
 ) => {
    return rest * set > 0 ? (weight * rep) / (rest * set) : 0;
+};
+
+const quadraticPenalty = (k: number, S: number, a: number, b: number) => {
+   return k / ((S - a) ** 2 + 1) + k / ((b - S) ** 2 + 1);
 };
 
 const workoutIntensity = async (req: Request, res: Response) => {
@@ -77,7 +111,17 @@ const workoutIntensity = async (req: Request, res: Response) => {
          },
          [intensities[0]]
       );
-      return { intensities, deltaIntensities: intensityRateOfChange };
+      const penalties = workoutSessions.map((session) =>
+         quadraticPenalty(10, session.totalSets, 10, 28)
+      );
+      const penalisedIntensities = intensities.map(
+         (i, index) => i * penalties[index]
+      );
+      return {
+         intensities,
+         deltaIntensities: intensityRateOfChange,
+         penalisedIntensities: penalisedIntensities,
+      };
    } catch (err) {
       throw err;
    }

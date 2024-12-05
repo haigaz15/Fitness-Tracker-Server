@@ -142,6 +142,7 @@ const endWorkoutSession = async (
             : 0;
       await WorkoutSessionRepository.createOne({
          externalId: workoutSessionExternalId,
+         sessionDate: new Date(new Date().toISOString().split('T')[0]),
          sessionTime: elapsedTime,
          totalReps: 0,
          totalSets: 0,

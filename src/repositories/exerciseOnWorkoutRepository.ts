@@ -3,7 +3,9 @@ import {
    PrismaExerciseOnWorkoutCreateInput,
    PrismaExerciseOnWorkout,
    PrismaExerciseOnWorkoutWhereInput,
+   PrismaExerciseOnWorkoutWhereUniqueInput,
    PrismaExerciseOnWorkoutCreateManyInput,
+   PrismaExerciseOnWorkoutUpdateInput,
 } from '../modules/workout/exercise-on-workout.prisma.type';
 
 const createOne = async (
@@ -16,6 +18,16 @@ const findOne = async (query: PrismaExerciseOnWorkoutWhereInput) => {
    return await prisma.exerciseOnWorkout.findFirst({ where: query });
 };
 
+const updateOne = async (
+   query: PrismaExerciseOnWorkoutWhereUniqueInput,
+   data: PrismaExerciseOnWorkoutUpdateInput
+) => {
+   return await prisma.exerciseOnWorkout.update({
+      where: query,
+      data,
+   });
+};
+
 const createMany = async (data: PrismaExerciseOnWorkoutCreateManyInput[]) => {
    await prisma.exerciseOnWorkout.createMany({ data });
 };
@@ -26,4 +38,4 @@ const findAll = async (query: PrismaExerciseOnWorkoutWhereInput) => {
    });
 };
 
-export default { createOne, findOne, createMany, findAll };
+export default { createOne, findOne, createMany, findAll, updateOne };

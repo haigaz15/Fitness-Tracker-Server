@@ -1,6 +1,6 @@
 import WorkoutRepository from '../../repositories/workoutRepository';
 import UserRepository from '../../repositories/userRepository';
-import ExerciseOnWorkoutSessionRepository from '../../repositories/exerciseOnWorkoutRepository';
+import ExerciseOnWorkoutRepository from '../../repositories/exerciseOnWorkoutRepository';
 import ExerciseRepository from '../../repositories/exerciseRepository';
 import { Request, Response } from 'express';
 import { PrismaWorkout } from './workout.prisma.type';
@@ -72,7 +72,7 @@ const createWorkout = async (req: GetUserAuthInfoRequest, res: Response) => {
       if (dbExercises.length !== exercises.length) {
          throw badRequestError(CUSTOM_EXERCISE_ERROR_MESSAGES.MISSING_EXERCISE);
       }
-      await ExerciseOnWorkoutSessionRepository.createMany(
+      await ExerciseOnWorkoutRepository.createMany(
          dbExercises?.map((e: any, index: number) => {
             return {
                exerciseIndex: index,
@@ -191,6 +191,38 @@ const updateWorkoutSessionVolume = async (
    }
 };
 
+const updateWorkoutExercise = async (req: Request, res: Response) => {
+   try {
+      const { workoutId } = req.params;
+      const exerciseData = new WorkoutExerciseDTO(req.body);
+      const workout = await WorkoutRepository.findOne({
+         externalId: workoutId,
+      });
+      if (!workout)
+         throw notFoundError(CUSTOM_WORKOUT_MESSAGES.WORKOUTS_NOT_FOUND);
+      const exercise = await ExerciseRepository.findOne({
+         name: exerciseData.name,
+      });
+      if (!exercise)
+         throw notFoundError(CUSTOM_EXERCISE_ERROR_MESSAGES.EXERCISE_NOT_FOUND);
+      const exerciseOnWorkout = await ExerciseOnWorkoutRepository.findAll({
+         workoutId: workout.id,
+      });
+      if (exerciseOnWorkout.length === 0) notFoundError();
+      await ExerciseOnWorkoutRepository.createOne({
+         exerciseIndex: exerciseOnWorkout.length,
+         workoutId: workout.id,
+         exerciseId: exercise.id,
+         set: exerciseData.set,
+         reps: exerciseData.reps,
+         rest: exerciseData.rest,
+         weight: exerciseData.weight,
+      });
+   } catch (err) {
+      throw err;
+   }
+};
+
 const retrieveWorkout = async (req: Request, res: Response) => {
    try {
       const { workoutId } = req.params;
@@ -303,4 +335,5 @@ export default {
    deleteWorkouts,
    updateWorkoutSessionVolume,
    retrieveWorkoutWithWorkoutSession,
+   updateWorkoutExercise,
 };

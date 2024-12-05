@@ -202,3 +202,26 @@ export class WorkoutWithWorkoutSessionsReponseDTO {
       this.endTime = data.endTime;
    }
 }
+
+interface UpdateWorkoutExerciseInput {
+   name: string;
+   set: number;
+   reps: string;
+   rest: string;
+   weight: string;
+}
+
+export class UpdateWorkoutExerciseResponseDTO {
+   name: string;
+   set: number;
+   reps: string;
+   rest: string;
+   weight: string;
+   constructor(data: UpdateWorkoutExerciseInput) {
+      this.name = data.name;
+      this.set = data.set;
+      this.reps = data.reps;
+      this.rest = data.rest;
+      this.weight = data.weight;
+   }
+}

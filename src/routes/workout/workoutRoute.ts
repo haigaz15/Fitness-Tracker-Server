@@ -7,6 +7,11 @@ router.post('/workout', authMiddleWare, WorkoutController.createWorkout);
 //just for testing and development purposes I removed the authMiddleWare of this route
 router.get('/workouts', WorkoutController.retrieveWorkouts);
 router.delete('/workouts', authMiddleWare, WorkoutController.deleteAllWorkouts);
+router.put(
+   '/workout/workout-exercise/:workoutId',
+   authMiddleWare,
+   WorkoutController.updateWorkoutExercise
+);
 router.get(
    '/workout/:workoutId/workout-sessions',
    WorkoutController.retrieveWorkoutWithWorkoutSession

@@ -105,6 +105,21 @@ const retrieveWorkoutWithWorkoutSession = async (
    }
 };
 
+const updateWorkoutExercise = async (
+   req: Request,
+   res: Response,
+   next: NextFunction
+) => {
+   try {
+      await WorkoutService.updateWorkoutExercise(req, res);
+      res.send({
+         message: HTTP_SUCCESS_MESSAGES.UPDATED,
+      });
+   } catch (err) {
+      next(err);
+   }
+};
+
 const deleteAllWorkouts = async (
    req: Request,
    res: Response,
@@ -129,5 +144,6 @@ export default {
    retrieveWorkouts,
    deleteAllWorkouts,
    updateWorkoutSessionVolume,
+   updateWorkoutExercise,
    retrieveWorkoutWithWorkoutSession,
 };

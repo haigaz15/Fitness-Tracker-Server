@@ -4,6 +4,7 @@ import workoutRouter from './routes/workout/workoutRoute';
 import authRouter from './routes/auth/authRoute';
 import workoutStatRouter from './routes/workout-stat/workoutStatRoute';
 import userRouter from './routes/user/userRoute';
+import programRouter from './routes/program/programRoute';
 import dotenv from 'dotenv';
 import cors from 'cors';
 dotenv.config();
@@ -18,6 +19,7 @@ app.use(exerciseLibraryRouter);
 app.use(workoutRouter);
 app.use(workoutStatRouter);
 app.use(userRouter);
+app.use(programRouter);
 app.use(errorMiddleWare);
 async function initializeServer() {
    try {

@@ -46,6 +46,7 @@ model Workout {
   userId          String              @db.ObjectId
   user            User                @relation(fields: [userId], references: [id])
   workoutSessions WorkoutSession[]
+  programs        WorkoutOnProgram[]
 }
 
 model WorkoutSession {
@@ -61,6 +62,25 @@ model WorkoutSession {
   workout     Workout? @relation(fields: [workoutId], references: [id], onDelete: SetNull)
 }
 
+model Program {
+  id               String             @id @default(auto()) @map("_id") @db.ObjectId
+  externalId       String             @unique @default(uuid())
+  name             String
+  programStartTime DateTime
+  programEndTime   DateTime
+  workouts         WorkoutOnProgram[]
+  userId           String             @db.ObjectId
+  user             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model WorkoutOnProgram {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  program   Program @relation(fields: [programId], references: [id])
+  programId String  @db.ObjectId
+  workout   Workout @relation(fields: [workoutId], references: [id], onDelete: Cascade)
+  workoutId String  @db.ObjectId
+}
+
 model User {
   id               String          @id @default(auto()) @map("_id") @db.ObjectId
   firstName        String
@@ -72,6 +92,7 @@ model User {
   weight           Float?
   height           Float?
   workouts         Workout[]
+  programs         Program[]
   bodyMuscleSizeId String?         @db.ObjectId
   bodyMuscleSize   BodyMuscleSize? @relation(fields: [bodyMuscleSizeId], references: [id])
 }
